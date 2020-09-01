@@ -6,6 +6,8 @@ A database model to be used for a college/university publication and
 store the data like cartoons, articles, members.
 
 ### Entity Relationship Diagram (Without Constraints)
+<img src="./Media/ER diagram.png">
+
 
 ### Softwares Used and Installation
 
