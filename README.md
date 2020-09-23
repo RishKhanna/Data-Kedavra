@@ -9,6 +9,10 @@ store the data like cartoons, articles, members.
 <img src="./Media/ER diagram.png">
 
 
+### Relational Database Model
+<img src="./Media/Relational Diagram.png">
+
+
 ### Softwares Used and Installation
 
 
