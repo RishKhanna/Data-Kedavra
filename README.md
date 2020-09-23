@@ -6,11 +6,11 @@ A database model to be used for a college/university publication and
 store the data like cartoons, articles, members.
 
 ### Entity Relationship Diagram (Without Constraints)
-<img src="./Media/ER diagram.png">
+<img src="./Readme Media/ER diagram.png">
 
 
 ### Relational Database Model
-<img src="./Media/Relational Diagram.png">
+<img src="./Readme Media/Relational Diagram.png">
 
 
 ### Softwares Used and Installation
