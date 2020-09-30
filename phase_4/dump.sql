@@ -18,11 +18,25 @@
 --
 -- Current Database: `data_kedavra`
 --
+DROP DATABASE IF EXISTS `Data_Kedavra`;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `Data_Kedavra` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `data_kedavra` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-
-USE `data_kedavra`;
+USE `Data_Kedavra`;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+DROP TABLE IF EXISTS `Members`;
+CREATE TABLE `Members` (
+	`member_id` int NOT NULL,
+	`f_name` varchar(15) NOT NULL, 
+	`m_name` varchar(15),
+	`l_name` varchar(15), 
+	`join_date` date NOT NULL,
+	`supervisor_id` int,
+	`email` varchar NOT NULL,
+	PRIMARY KEY (`member_id`),
+	KEY (`email`)
+);
+
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
