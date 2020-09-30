@@ -3,12 +3,13 @@ import pymysql
 import pymysql.cursors
 
 def fn1():
-	query = "SHOW TABLES"
+	query = "SHOW TABLES;"
 	cur.execute(query)
 	data = cur.fetchall()
 	for i in data:
 		print(i)
 
+# call the function depending on the option chosen
 def dispatch(ch):
 	if ch == 1:
 		fn1()
@@ -29,11 +30,11 @@ while(1):
 
 	# establish a MySQL connection
 	try:
-
 		# connect to DB
 		db = pymysql.connect("localhost", username, password, "sample")
 		tmp = sp.call('clear', shell = True)
 
+		# show connection status to the user
 		if(db.open):
 			print("Connected")
 		else:
@@ -43,12 +44,16 @@ while(1):
 
 		with db.cursor() as cur:
 			while(1):
+				# print the options available
 				tmp = sp.call('clear', shell = True)
 				print("1. show databases")
 				print("2. logout")
 
+				# get user input for option
 				ch = int(input("Enter choice> "))
 				tmp = sp.call('clear', shell = True)
+
+				# to exit the option list
 				if ch == 2:
 					break
 				else:
