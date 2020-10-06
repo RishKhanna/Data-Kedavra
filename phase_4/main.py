@@ -31,11 +31,11 @@ while(1):
 	# establish a MySQL connection
 	try:
 		# connect to DB
-		db = pymysql.connect("localhost", username, password, "sample")
+		db = pymysql.connect("localhost", username, password, "data_kedavra")
 		tmp = sp.call('clear', shell = True)
 
 		# show connection status to the user
-		if(db.open):
+		if(db.opencur):
 			print("Connected")
 		else:
 			print("lol F")
@@ -46,12 +46,12 @@ while(1):
 			while(1):
 				# print the options available
 				tmp = sp.call('clear', shell = True)
-				print("1. show databases")
-				print("2. logout")
+				print("1. Show Tables:")
+				print("2. Logout:")
 
 				# get user input for option
-				ch = int(input("Enter choice> "))
-				tmp = sp.call('clear', shell = True)
+				ch = int(input("Enter choice: "))
+				tmp = sp.call('Clear', shell = True)
 
 				# to exit the option list
 				if ch == 2:

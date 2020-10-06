@@ -19,7 +19,7 @@
 -- Current Database: `data_kedavra`
 --
 
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `data_kedavra` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `data_kedavra` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 
 USE `data_kedavra`;
 
@@ -38,7 +38,7 @@ CREATE TABLE `article` (
   `title` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`volume_no`,`issue_no`,`page_no`),
   CONSTRAINT `article_ibfk_1` FOREIGN KEY (`volume_no`, `issue_no`) REFERENCES `magazine` (`volume_no`, `issue_no`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -62,7 +62,7 @@ CREATE TABLE `author` (
   `languages` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `author_ibfk_1` FOREIGN KEY (`id`) REFERENCES `members` (`member_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -90,7 +90,7 @@ CREATE TABLE `cartoon` (
   PRIMARY KEY (`image_url`,`volume_no`,`issue_no`),
   KEY `volume_no` (`volume_no`,`issue_no`),
   CONSTRAINT `cartoon_ibfk_1` FOREIGN KEY (`volume_no`, `issue_no`) REFERENCES `magazine` (`volume_no`, `issue_no`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -124,7 +124,7 @@ CREATE TABLE `contribute` (
   CONSTRAINT `contribute_ibfk_2` FOREIGN KEY (`author_id`) REFERENCES `author` (`id`),
   CONSTRAINT `contribute_ibfk_3` FOREIGN KEY (`designer_id`) REFERENCES `designer` (`id`),
   CONSTRAINT `contribute_ibfk_4` FOREIGN KEY (`volume_no`, `issue_no`, `page_no`) REFERENCES `article` (`volume_no`, `issue_no`, `page_no`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -148,7 +148,7 @@ CREATE TABLE `designer` (
   `softwaress` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `designer_ibfk_1` FOREIGN KEY (`id`) REFERENCES `members` (`member_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -174,7 +174,7 @@ CREATE TABLE `draws` (
   KEY `designer_id` (`designer_id`),
   CONSTRAINT `draws_ibfk_1` FOREIGN KEY (`designer_id`) REFERENCES `designer` (`id`),
   CONSTRAINT `draws_ibfk_2` FOREIGN KEY (`cartoon`) REFERENCES `cartoon` (`image_url`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -198,7 +198,7 @@ CREATE TABLE `editor` (
   `genres` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `editor_ibfk_1` FOREIGN KEY (`id`) REFERENCES `members` (`member_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -222,7 +222,7 @@ CREATE TABLE `Magazine` (
   `issue_no` int NOT NULL,
   `date` date DEFAULT NULL,
   PRIMARY KEY (`volume_no`,`issue_no`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -246,7 +246,7 @@ CREATE TABLE `marketing` (
   `platforms` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `marketing_ibfk_1` FOREIGN KEY (`id`) REFERENCES `members` (`member_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -274,7 +274,7 @@ CREATE TABLE `Members` (
   `superviser_id` int DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`member_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -300,7 +300,7 @@ CREATE TABLE `selling_advert` (
   KEY `marketers_id` (`marketers_id`),
   CONSTRAINT `selling_advert_ibfk_2` FOREIGN KEY (`sponsor_id`) REFERENCES `sponsors` (`sponsor_id`),
   CONSTRAINT `selling_advert_ibfk_3` FOREIGN KEY (`marketers_id`) REFERENCES `marketing` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -324,7 +324,7 @@ CREATE TABLE `Sponsors` (
   `product` varchar(200) DEFAULT NULL,
   `payment` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`sponsor_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -351,7 +351,7 @@ CREATE TABLE `subscribers` (
   `m_name` varchar(100) DEFAULT NULL,
   `l_name` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -378,7 +378,7 @@ CREATE TABLE `subscribes` (
   KEY `subscriber` (`subscriber`),
   CONSTRAINT `subscribes_ibfk_1` FOREIGN KEY (`subscriber`) REFERENCES `subscribers` (`email`),
   CONSTRAINT `subscribes_ibfk_2` FOREIGN KEY (`volume`, `issue`) REFERENCES `magazine` (`volume_no`, `issue_no`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -404,7 +404,7 @@ CREATE TABLE `supervise` (
   KEY `superviser` (`supervisor`),
   CONSTRAINT `supervise_ibfk_1` FOREIGN KEY (`member`) REFERENCES `members` (`member_id`),
   CONSTRAINT `supervise_ibfk_2` FOREIGN KEY (`supervisor`) REFERENCES `members` (`member_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
