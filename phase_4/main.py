@@ -1,7 +1,7 @@
 import subprocess as sp
 import pymysql
 import pymysql.cursors
-
+import Scripts.Retrival.retrive as retrive
 import Scripts.Modification.modify as modify
 
 def fn1():
@@ -16,7 +16,7 @@ def dispatch(ch):
 	if ch == 1:
 		fn1()
 	elif ch==2:
-		pass
+		retrive.main()
 	elif ch==3:
 		modify.main()
 	else:
