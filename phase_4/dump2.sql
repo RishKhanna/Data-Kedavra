@@ -103,6 +103,29 @@ LOCK TABLES `cartoon` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `Contains`
+--
+
+DROP TABLE IF EXISTS `Contains`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `Contains` (
+  `volume` int DEFAULT NULL,
+  `issue` int DEFAULT NULL,
+  `cartoon` varchar(500) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Contains`
+--
+
+LOCK TABLES `Contains` WRITE;
+/*!40000 ALTER TABLE `Contains` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Contains` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `contribute`
 --
 
@@ -168,10 +191,10 @@ DROP TABLE IF EXISTS `draws`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `draws` (
-  `cartoon` varchar(300) NOT NULL,
+  `cartoon` varchar(300) DEFAULT NULL,
   `designer_id` int DEFAULT NULL,
-  PRIMARY KEY (`cartoon`),
   KEY `designer_id` (`designer_id`),
+  KEY `cartoon` (`cartoon`),
   CONSTRAINT `draws_ibfk_1` FOREIGN KEY (`designer_id`) REFERENCES `designer` (`id`),
   CONSTRAINT `draws_ibfk_2` FOREIGN KEY (`cartoon`) REFERENCES `cartoon` (`image_url`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -208,6 +231,29 @@ CREATE TABLE `editor` (
 LOCK TABLES `editor` WRITE;
 /*!40000 ALTER TABLE `editor` DISABLE KEYS */;
 /*!40000 ALTER TABLE `editor` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Includes`
+--
+
+DROP TABLE IF EXISTS `Includes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `Includes` (
+  `issue` int DEFAULT NULL,
+  `volume` int DEFAULT NULL,
+  `page` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Includes`
+--
+
+LOCK TABLES `Includes` WRITE;
+/*!40000 ALTER TABLE `Includes` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Includes` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -373,8 +419,8 @@ DROP TABLE IF EXISTS `subscribes`;
 CREATE TABLE `subscribes` (
   `volume` int NOT NULL,
   `issue` int NOT NULL,
-  `subscriber` varchar(100) NOT NULL,
-  PRIMARY KEY (`volume`,`issue`,`subscriber`),
+  `subscriber` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`volume`,`issue`),
   KEY `subscriber` (`subscriber`),
   CONSTRAINT `subscribes_ibfk_1` FOREIGN KEY (`subscriber`) REFERENCES `subscribers` (`email`),
   CONSTRAINT `subscribes_ibfk_2` FOREIGN KEY (`volume`, `issue`) REFERENCES `magazine` (`volume_no`, `issue_no`)
@@ -391,29 +437,25 @@ LOCK TABLES `subscribes` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `supervise`
+-- Table structure for table `Supervise`
 --
 
-DROP TABLE IF EXISTS `supervise`;
+DROP TABLE IF EXISTS `Supervise`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `supervise` (
+CREATE TABLE `Supervise` (
   `member` int DEFAULT NULL,
-  `supervisor` int DEFAULT NULL,
-  KEY `member` (`member`),
-  KEY `superviser` (`supervisor`),
-  CONSTRAINT `supervise_ibfk_1` FOREIGN KEY (`member`) REFERENCES `members` (`member_id`),
-  CONSTRAINT `supervise_ibfk_2` FOREIGN KEY (`supervisor`) REFERENCES `members` (`member_id`)
+  `superviser` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `supervise`
+-- Dumping data for table `Supervise`
 --
 
-LOCK TABLES `supervise` WRITE;
-/*!40000 ALTER TABLE `supervise` DISABLE KEYS */;
-/*!40000 ALTER TABLE `supervise` ENABLE KEYS */;
+LOCK TABLES `Supervise` WRITE;
+/*!40000 ALTER TABLE `Supervise` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Supervise` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -425,4 +467,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-06  6:04:19
+-- Dump completed on 2020-10-06  5:36:56
