@@ -3,7 +3,7 @@ import Scripts.Modification.deletion as deletion
 import Scripts.Modification.insertion as insertion
 import Scripts.Modification.updation as updation
 
-def main():
+def main(username, password):
 	print("Which of the following Modifications would you like to do?")
 	print("""1. Insertion
 		Creating an Issue.
@@ -20,7 +20,7 @@ def main():
 		Change the categories in an Article.
 		Modify Member details.
 		Modify Subscriber details""")
-	print("""3. query = Deletion
+	print("""3. Deletion
 		Remove a Member.
 		Delete an Article.
 		Unsubscribe.
@@ -44,19 +44,19 @@ def main():
 		# 
 		#
 		if ch2==1:
-			query = insertion.creating_an_issue()
+			query = insertion.creating_an_issue(username, password)
 
 		elif ch2==2:
-			query = insertion.adding_categories_to_the_article()
+			query = insertion.adding_categories_to_the_article(username, password)
 
 		elif ch2==3:
-			query = insertion.add_a_member()
+			query = insertion.add_a_member(username, password)
 
 		elif ch2==4:
-			query = insertion.add_a_subscriber()
+			query = insertion.add_a_subscriber(username, password)
 
 		elif ch2==5:
-			query = insertion.add_a_sponsor()
+			query = insertion.add_a_sponsor(username, password)
 
 		else:
 			return
@@ -68,7 +68,7 @@ def main():
 	elif ch==2:
 		print("Which of the following Updations would you like to do?")
 		print("""
-		1. Modify the contents of the Article.
+		1. Modify the title of the Article.
 		2. Change the issue of an Article.
 		3. Change the tags in an Article.
 		4. Change the categories in an Article.
@@ -81,10 +81,10 @@ def main():
 		# 
 		#
 		if ch2==1:
-			query = updation.modify_the_contents_of_the_article()
+			query = updation.modify_the_title_of_the_article(username, password)
 
 		elif ch2==2:
-			query = updation.change_the_issue_of_an_article()
+			query = updation.change_the_issue_of_an_article(username, password)
 
 		elif ch2==3:
 			query = updation.change_the_tags_in_an_article()

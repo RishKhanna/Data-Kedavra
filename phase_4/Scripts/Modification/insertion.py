@@ -1,4 +1,19 @@
-def creating_an_issue () :
+import pymysql
+import pymysql.cursors
+
+def db_con(username, password, query):
+	db = pymysql.connect("localhost", username, password, "data_kedavra")
+	with db.cursor() as cur:
+		cur.execute(query)
+		data = cur.fetchall()
+		db.commit()
+
+	return data
+
+# Insertion functions start here >
+
+# add a record for issue
+def creating_an_issue (username, password) :
 	print("Creating an issue: ")
 	volume_no = input("Volume no: ")
 	issue_no = input("Issue no: ")
@@ -6,12 +21,16 @@ def creating_an_issue () :
 
 	query = "INSERT into MAGAZINE values(" + volume_no + ", " + issue_no + ", \"" + date + "\");"
 
-	return query
+	db_con(username, password, query)
 
+
+# add a category for article
 def adding_categories_to_the_article () :
 	pass
 
-def add_a_member () :
+
+# add a record for sponsor
+def add_a_member (username, password) :
 	print("Add a member:")
 	member_id = input("Member ID: ")
 	name = input("Name: ")
@@ -30,9 +49,11 @@ def add_a_member () :
 
 	query = "INSERT into members values(" + member_id + ", \"" + f_name + "\", \"" + m_name + "\", \"" + l_name + "\", \"" + join_date + "\", " + supervisor_id + ", \"" + email +"\");"
 
-	return query
+	db_con(username, password, query)
 
-def add_a_subscriber () :
+
+# add a record for subscriber
+def add_a_subscriber (username, password) :
 	print("Add a subscriber:")
 	name = input("Name: ")
 	email = input("Email: ")
@@ -50,9 +71,11 @@ def add_a_subscriber () :
 
 	query = "INSERT into subscribers values(\"" + email + "\"," + sub_type + ", \"" + sub_date +  "\", \"" + f_name + "\", \"" + m_name + "\", \"" + l_name + "\");"
 
-	return query
+	db_con(username, password, query)
 
-def add_a_sponsor () :
+
+# add a record for sponsor
+def add_a_sponsor (username, password) :
 	print("Add a sponsor:")
 	sponsor_id = input("Sponsor ID: ")
 	product = input("Product: ")
@@ -60,7 +83,9 @@ def add_a_sponsor () :
 
 	query = "INSERT into sponsors values (" + sponsor_id + ", \"" + product + "\", \"" + payment + "\");"
 
-	return query
+	db_con(username, password, query)
+
+
 
 # CHANGES:
 # - removed adding_tags_to_the_article() -- redundant

@@ -18,9 +18,7 @@ def dispatch(ch):
 	elif ch==2:
 		retrive.main()
 	elif ch==3:
-		query = modify.main()
-		cur.execute(query)
-		db.commit()
+		modify.main(username, password)
 
 	else:
 		print("Enter a valid option.")
@@ -81,7 +79,7 @@ while(1):
 					break
 				else:
 					dispatch(ch)
-					tmp = input("Enter any key bro>")
+					tmp = input("Press any key to CONTINUE >")
 
 	# error handling
 	except Exception as e:
