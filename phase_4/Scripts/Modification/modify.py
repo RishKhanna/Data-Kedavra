@@ -20,7 +20,7 @@ def main():
 		Change the categories in an Article.
 		Modify Member details.
 		Modify Subscriber details""")
-	print("""3. Deletion
+	print("""3. query = Deletion
 		Remove a Member.
 		Delete an Article.
 		Unsubscribe.
@@ -46,28 +46,30 @@ def main():
 		# 
 		#
 		if ch2==1:
-			insertion.creating_an_issue()
+			query = insertion.creating_an_issue()
 
 		elif ch2==2:
-			insertion.adding_tags_to_article()
+			query = insertion.adding_tags_to_article()
 
 		elif ch2==3:
-			insertion.adding_categories_to_the_article()
+			query = insertion.adding_categories_to_the_article()
 
 		elif ch2==4:
-			insertion.adding_tags_to_the_article()
+			query = insertion.adding_tags_to_the_article()
 
 		elif ch2==5:
-			insertion.add_a_member()
+			query = insertion.add_a_member()
 
 		elif ch2==6:
-			insertion.add_a_subscriber()
+			query = insertion.add_a_subscriber()
 
 		elif ch2==7:
-			insertion.add_a_sponsor()
+			query = insertion.add_a_sponsor()
 
 		else:
 			return
+
+		return query
 		#
 		# 
 
@@ -87,30 +89,32 @@ def main():
 		# 
 		#
 		if ch2==1:
-			updation.modify_the_contents_of_the_article()
+			query = updation.modify_the_contents_of_the_article()
 
 		elif ch2==2:
-			updation.change_the_issue_of_an_article()
+			query = updation.change_the_issue_of_an_article()
 
 		elif ch2==3:
-			updation.change_the_tags_in_an_article()
+			query = updation.change_the_tags_in_an_article()
 
 		elif ch2==4:
-			updation.change_the_categories_in_an_article()
+			query = updation.change_the_categories_in_an_article()
 
 		elif ch2==5:
-			updation.modify_member_details()
+			query = updation.modify_member_details()
 
 		elif ch2==6:
-			updation.modify_subscriber_details()
+			query = updation.modify_subscriber_details()
 
 		else:
 			return
+
+		return query
 		#
 		# 
 
 	elif ch==3:
-		print("Which of the following Deletions would you like to do?")
+		print("Which of the following query = Deletions would you like to do?")
 		print("""
 		1. Remove a Member.
 		2. Delete an Article.
@@ -123,16 +127,16 @@ def main():
 		# 
 		#
 		if ch2==1:
-			deletion.remove_a_member()
+			query = deletion.remove_a_member()
 
 		elif ch2==2:
-			deletion.delete_an_article()
+			query = deletion.delete_an_article()
 
 		elif ch2==3:
-			deletion.unsubscribe()
+			query = deletion.unsubscribe()
 
 		elif ch2==4:
-			deletion.remove_a_sponsor()
+			query = deletion.remove_a_sponsor()
 
 		else:
 			return

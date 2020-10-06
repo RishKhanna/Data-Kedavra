@@ -18,7 +18,10 @@ def dispatch(ch):
 	elif ch==2:
 		retrive.main()
 	elif ch==3:
-		modify.main()
+		query = modify.main()
+		cur.execute(query)
+		db.commit()
+
 	else:
 		print("Enter a valid option.")
 
@@ -52,6 +55,12 @@ while(1):
 		tmp = input("Enter any key to CONTINUE IN THIS REALM>")
 
 		with db.cursor() as cur:
+
+			qr = "source dump.sql"
+			cur.execute(qr)
+			# db.commit()
+
+
 			while(1):
 				# print the options available
 				tmp = sp.call('clear', shell = True)
