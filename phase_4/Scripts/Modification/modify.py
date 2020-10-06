@@ -33,12 +33,10 @@ def main():
 		print("Which of the following Insertions would you like to do?")
 		print("""
 		1. Creating an Issue.
-		2. Adding Tags to Article.
-		3. Adding Categories to the Article.
-		4. Adding Tags to the Article.
-		5. Add a Member.
-		6. Add a Subscriber.
-		7. Add a Sponsor.""")
+		2. Adding Categories to the Article.
+		3. Add a Member.
+		4. Add a Subscriber.
+		5. Add a Sponsor.""")
 		
 		ch2 = int(input("Enter choice: "))
 		tmp = sp.call('clear', shell = True)
@@ -49,21 +47,15 @@ def main():
 			query = insertion.creating_an_issue()
 
 		elif ch2==2:
-			query = insertion.adding_tags_to_article()
-
-		elif ch2==3:
 			query = insertion.adding_categories_to_the_article()
 
-		elif ch2==4:
-			query = insertion.adding_tags_to_the_article()
-
-		elif ch2==5:
+		elif ch2==3:
 			query = insertion.add_a_member()
 
-		elif ch2==6:
+		elif ch2==4:
 			query = insertion.add_a_subscriber()
 
-		elif ch2==7:
+		elif ch2==5:
 			query = insertion.add_a_sponsor()
 
 		else:
@@ -114,7 +106,7 @@ def main():
 		# 
 
 	elif ch==3:
-		print("Which of the following query = Deletions would you like to do?")
+		print("Which of the following Deletions would you like to do?")
 		print("""
 		1. Remove a Member.
 		2. Delete an Article.
