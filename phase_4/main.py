@@ -56,8 +56,8 @@ while(1):
 
 		with db.cursor() as cur:
 
-			qr = "source dump.sql"
-			cur.execute(qr)
+			# qr = "source dump.sql"
+			# cur.execute(qr)
 			# db.commit()
 
 
