@@ -24,7 +24,13 @@ temp3 = [
 "Remove a Sponsor"
 ]
 
-for i in temp3 :
-	i = "_".join(i.split())
-	print("def", i.lower(),"() :")
-	print("\tpass\n")
+# for i in temp3 :
+# 	i = "_".join(i.split())
+# 	print("def", i.lower(),"() :")
+# 	print("\tpass\n")
+
+for i in range(len(temp3)):
+	temp = "_".join(temp3[i].split(" "))
+	print("elif ch2==" + str(i+1) + ":" )
+	print("\tdeletion." + temp.lower() + "()")
+	print()

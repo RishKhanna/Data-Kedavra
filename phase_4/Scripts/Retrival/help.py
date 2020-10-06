@@ -37,7 +37,12 @@ temp5=[
 "List_of_subscribers_who_subscribed_between_two_consecutive_Volumes"
 ]
 
-for i in temp5:
-	print("def",i.lower(),"():")
-	print("    pass")
-	print("\n")
+# for i in temp5:
+# 	print("def",i.lower(),"():")
+# 	print("    pass")
+# 	print("\n")
+
+for i in range(len(temp5)):
+	print("elif ch2==",i+1,":")
+	print("\tanalysis." + temp5[i].lower() + "()" )
+	print("")
