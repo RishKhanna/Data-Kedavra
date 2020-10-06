@@ -20,7 +20,7 @@ def add_a_member () :
 	email = input("Email: ")
 
 	name = name.split()
-	f_name = name[0];
+	f_name = name[0]
 	m_name = ""
 	l_name = ""
 	if len(name) == 2:
@@ -40,7 +40,7 @@ def add_a_subscriber () :
 	sub_date = input("Date of Subscribing (YYYY-MM-DD): ")
 
 	name = name.split()
-	f_name = name[0];
+	f_name = name[0]
 	m_name = ""
 	l_name = ""
 	if len(name) == 2:
