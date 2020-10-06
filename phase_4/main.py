@@ -60,7 +60,7 @@ while(1):
 				print("2. Retrival")
 				print("\tincludes: \n\t\t-> Selection.\n\t\t-> Projection.\n\t\t-> Aggregate.\n\t\t-> Search.\n\t\t-> Analysis.")
 				print("3. Modification")
-				print("\tincludes:\n\t\t-> Insertion.\n\t\t-> Updation\n\t\t->Deletion")
+				print("\tincludes:\n\t\t-> Insertion.\n\t\t-> Updation.\n\t\t-> Deletion.")
 				print("0. Logout")
 
 				# get user input for option

@@ -44,7 +44,31 @@ def main():
 		tmp = sp.call('clear', shell = True)
 
 		# 
-		# 
+		#
+		if ch2==1:
+			insertion.creating_an_issue()
+
+		elif ch2==2:
+			insertion.adding_tags_to_article()
+
+		elif ch2==3:
+			insertion.adding_categories_to_the_article()
+
+		elif ch2==4:
+			insertion.adding_tags_to_the_article()
+
+		elif ch2==5:
+			insertion.add_a_member()
+
+		elif ch2==6:
+			insertion.add_a_subscriber()
+
+		elif ch2==7:
+			insertion.add_a_sponsor()
+
+		else:
+			return
+		#
 		# 
 
 	elif ch==2:
@@ -61,7 +85,28 @@ def main():
 		tmp = sp.call('clear', shell = True)
 
 		# 
-		# 
+		#
+		if ch2==1:
+			updation.modify_the_contents_of_the_article()
+
+		elif ch2==2:
+			updation.change_the_issue_of_an_article()
+
+		elif ch2==3:
+			updation.change_the_tags_in_an_article()
+
+		elif ch2==4:
+			updation.change_the_categories_in_an_article()
+
+		elif ch2==5:
+			updation.modify_member_details()
+
+		elif ch2==6:
+			updation.modify_subscriber_details()
+
+		else:
+			return
+		#
 		# 
 
 	elif ch==3:
@@ -76,7 +121,22 @@ def main():
 		tmp = sp.call('clear', shell = True)
 
 		# 
-		# 
+		#
+		if ch2==1:
+			deletion.remove_a_member()
+
+		elif ch2==2:
+			deletion.delete_an_article()
+
+		elif ch2==3:
+			deletion.unsubscribe()
+
+		elif ch2==4:
+			deletion.remove_a_sponsor()
+
+		else:
+			return
+		#
 		# 
 
 	else:

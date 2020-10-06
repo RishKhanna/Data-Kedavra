@@ -63,7 +63,52 @@ def main():
 		tmp = sp.call('clear', shell = True)
 	
 		# 
-		# 
+		#
+		if ch2== 1 :
+			selection.list_all_issues()
+
+		elif ch2== 2 :
+			selection.list_all_articles()
+
+		elif ch2== 3 :
+			selection.list_all_authors()
+
+		elif ch2== 4 :
+			selection.articles_from_a_particular_magazine_issue()
+
+		elif ch2== 5 :
+			selection.list_of_all_articles_written_by_an_author()
+
+		elif ch2== 6 :
+			selection.list_all_editors()
+
+		elif ch2== 7 :
+			selection.list_of_all_articles_edited_by_an_editor()
+
+		elif ch2== 8 :
+			selection.list_all_designers()
+
+		elif ch2== 9 :
+			selection.list_of_all_articles_designed_by_a_designer()
+
+		elif ch2== 10 :
+			selection.show_cartoons_by_designer()
+
+		elif ch2== 11 :
+			selection.show_cartoons_from_a_particular_issue()
+
+		elif ch2== 12 :
+			selection.show_cartoons_from_a_particular_volume()
+
+		elif ch2== 13 :
+			selection.subscribers_for_a_given_volume()
+
+		elif ch2== 14 :
+			selection.subscribers_for_a_given_issue()
+
+		else:
+			return
+		#
 		# 
 
 	elif ch==2:
@@ -79,6 +124,24 @@ def main():
 
 		# 
 		# 
+		if ch2== 1 :
+			projection.issues_in_a_volume()
+
+		elif ch2== 2 :
+			projection.articles_with_a_particular_category()
+
+		elif ch2== 3 :
+			projection.sort_articles_by_name()
+
+		elif ch2== 4 :
+			projection.show_cartoons_with_a_particular_tag()
+
+		elif ch2== 5 :
+			projection.subscribers_with_a_particular_subscription_type()
+
+		else:
+			return
+		#
 		# 
 
 	elif ch==3:
@@ -92,6 +155,18 @@ def main():
 
 		# 
 		# 
+		if ch2== 1 :
+			aggregate.average_number_of_subscribers_for_a_volume()
+
+		elif ch2== 2 :
+			aggregate.total_number_of_articles_in_a_volume()
+
+		elif ch2== 3 :
+			aggregate.subscription_change_between_two_given_dates()
+
+		else:
+			return
+		#
 		# 
 
 	elif ch==4:
@@ -103,7 +178,16 @@ def main():
 		tmp = sp.call('clear', shell = True)
 
 		# 
-		# 
+		#
+		if ch2== 1 :
+			search.search_articles_by_name()
+
+		elif ch2== 2 :
+			search.search_members_by_name()
+
+		else:
+			return
+		#
 		# 
 
 	elif ch==5:
@@ -116,6 +200,15 @@ def main():
 
 		# 
 		# 
+		if ch2== 1 :
+			analysis.most_frequent_category_of_articles_written_by_each_author()
+
+		elif ch2== 2 :
+			analysis.list_of_subscribers_who_subscribed_between_two_consecutive_volumes()
+		
+		else:
+			return
+		#
 		# 
 
 	else:
