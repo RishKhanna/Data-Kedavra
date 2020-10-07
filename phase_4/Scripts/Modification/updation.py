@@ -13,7 +13,7 @@ def db_con(username, password, query):
 
 # Updation functions start here >
 
-def change_article_details (username, password) :
+def modify_article_details (username, password) :
 
 	# get info about all the articles
 	query = "Select * from article;"
@@ -47,7 +47,6 @@ def change_article_details (username, password) :
 		field_name = "Title"
 	else:
 		print("Please choose a valid option")
-		pass
 		return
 
 	print()
@@ -67,7 +66,6 @@ def change_article_details (username, password) :
 		updation_query = "UPDATE article SET " + field + "= \"" + new_field + "\" where volume_no=\"" + volume_no + "\" AND issue_no=\"" + issue_no + "\" AND page_no=\"" + page_no + "\";"
 
 	else:
-		pass
 		return
 
 	db_con(username, password, updation_query)
@@ -110,7 +108,6 @@ def modify_member_details (username, password) :
 		field_name = "Email"
 	else:
 		print("Please choose a valid option")
-		pass
 		return
 
 	print()
@@ -128,11 +125,10 @@ def modify_member_details (username, password) :
 		updation_query = "UPDATE members SET " + field + "= \"" + new_field + "\" where member_id=\"" + member_id + "\";"
 
 	else:
-		pass
 		return
 
 	db_con(username, password, updation_query)
-	pass
+
 
 def modify_subscriber_details (username, password) :
 
@@ -172,7 +168,6 @@ def modify_subscriber_details (username, password) :
 		field_name = "Email"
 	else:
 		print("Please choose a valid option")
-		pass
 		return
 
 	print()
@@ -189,11 +184,54 @@ def modify_subscriber_details (username, password) :
 		updation_query = "UPDATE subscribers SET " + field + "= \"" + new_field + "\" where email=\"" + email + "\";"
 
 	else:
-		pass
 		return
 
 	db_con(username, password, updation_query)
-	pass
+
+
+def modify_author_details (username, password) :
+
+	# get info about all the articles
+	query = "Select * from author;"
+	data = db_con(username, password, query)
+	# Display all the article details
+	print(colored("Authors available:", 'green', attrs=['bold']))
+	print(colored("ID \tLanguage", 'blue'))
+	for i in data:
+		print(colored(str(i[0]) + "\t" + str(i[1]), 'cyan'))
+	print("")
+
+	# Select the detail to change
+	print("What detail would you like to change?")
+	print("\t1. Language")
+	ch = int(input("Enter the number corresponsding to the selected option: "))
+
+	if ch == 1:
+		field = "languages"
+		field_name = "Language"
+	else:
+		print("Please choose a valid option")
+		return
+
+	print()
+
+	# get primary key of the article whose details have to be changed
+	print("Please enter the details for the concerned Author")
+	auth_id = input("ID: ")
+	get_modification_details_query = "SELECT " + field + " from author where id=\"" + auth_id + "\";"
+	to_modify = db_con(username, password, get_modification_details_query)
+	response = input("Please confirm that the " + field_name + " you want to modify is " + str(to_modify[0][0]) + " (y/n): ")
+
+	if response == "y":
+		new_field = input("New " + field_name + ": ")
+		updation_query = "UPDATE author SET " + field + "= \"" + new_field + "\" where id=\"" + auth_id + "\";"
+
+	else:
+		return
+
+	db_con(username, password, updation_query)
+
+
 
 # CHANGES
 # - modify_the_contents_of_the_article -> modify_the_title_of_the_article

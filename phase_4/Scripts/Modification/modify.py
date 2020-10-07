@@ -14,9 +14,10 @@ def main(username, password):
 		Add a Subscriber.
 		Add a Sponsor.""")
 	print("""2. Updation
-		Change the details of an Article.
+		Modify Article details.
 		Modify Member details.
-		Modify Subscriber details""")
+		Modify Subscriber details
+		Modiy Author details""")
 	print("""3. Deletion
 		Remove a Member.
 		Delete an Article.
@@ -65,9 +66,10 @@ def main(username, password):
 	elif ch==2:
 		print("Which of the following Updations would you like to do?")
 		print("""
-		1. Change the details of an Article.
+		1. Modify Article details.
 		2. Modify Member details.
-		3. Modify Subscriber details.""")
+		3. Modify Subscriber details.
+		4. Modify Author details""")
 
 		ch2 = int(input("Enter choice: "))
 		tmp = sp.call('clear', shell = True)
@@ -75,13 +77,15 @@ def main(username, password):
 		# 
 		#
 		if ch2==1:
-			query = updation.change_article_details(username, password)
+			query = updation.modify_article_details(username, password)
 
 		elif ch2==2:
 			query = updation.modify_member_details(username, password)
 
 		elif ch2==3:
 			query = updation.modify_subscriber_details(username, password)
+		elif ch2 == 4:
+			query = updation.modify_author_details(username, password)
 
 		else:
 			return
