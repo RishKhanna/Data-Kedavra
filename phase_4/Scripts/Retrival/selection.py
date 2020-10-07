@@ -108,8 +108,18 @@ def show_cartoons_from_a_particular_volume(username, password):
 
 
 def subscribers_for_a_given_volume(username, password):
-    pass
+    vol_id = input("Enter Volume No.: ")
+    query = "SELECT F_NAME, M_NAME, L_NAME, EMAIL, SUB_TYPE FROM SUBSCRIBERS INNER JOIN SUBSCRIBES ON SUBSCRIBERS.EMAIL=SUBSCRIBES.SUBSCRIBER WHERE VOLUME <="+vol_id+";"
+    table = db_con(username, password, query)
+    print(tabulate(table, headers=[
+          'First Name', 'Middle Name', 'Last Name', 'E-Mail', 'Subscription Type'], tablefmt='psql'))
 
 
 def subscribers_for_a_given_issue(username, password):
-    pass
+    vol_id = input("Enter Volume No.: ")
+    iss_id = input("Enter Issue No.: ")
+    query = "SELECT F_NAME, M_NAME, L_NAME, EMAIL, SUB_TYPE FROM SUBSCRIBERS INNER JOIN SUBSCRIBES ON SUBSCRIBERS.EMAIL=SUBSCRIBES.SUBSCRIBER WHERE VOLUME <" + \
+        vol_id+" OR (VOLUME="+vol_id+" AND ISSUE<="+iss_id+");"
+    table = db_con(username, password, query)
+    print(tabulate(table, headers=[
+          'First Name', 'Middle Name', 'Last Name', 'E-Mail', 'Subscription Type'], tablefmt='psql'))
