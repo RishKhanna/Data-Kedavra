@@ -289,6 +289,66 @@ def modify_cartoon_details (username, password) :
 	db_con(username, password, updation_query)
 
 
+def modify_contribution_details (username, password) :
+
+	# get info about all the articles
+	query = "Select * from contribute;"
+	data = db_con(username, password, query)
+	# Display all the article details
+	print(colored("Contributions available:", 'green', attrs=['bold']))
+	print(colored("Editor ID \tAuthor ID \tDesigner ID \tVolume no. \tIssue no. \tPage no.", 'blue'))
+	for i in data:
+		print(colored(str(i[0]) + "\t\t" + str(i[1]) + "\t\t" + str(i[2]) + "\t\t" + str(i[3]) + "\t\t" + str(i[4]) + "\t\t" + str(i[5]), 'cyan'))
+	print("")
+
+	# Select the detail to change
+	print("What detail would you like to change?")
+	print("\t1. Editor ID \n\t2. Author ID \n\t3. Designer ID \n\t4. Volume Number \n\t5. Issue Number \n\t6. Page no.")
+	ch = int(input("Enter the number corresponding to the selected option: "))
+
+	if ch == 1:
+		field = "editor_id"
+		field_name = "Editor ID"
+	elif ch == 2:
+		field = "author_id"
+		field_name = "Author ID"
+	elif ch == 3:
+		field = "designer_id"
+		field_name = "Designer ID"
+	elif ch == 4:
+		field = "volume_no"
+		field_name = "Volume number"
+	elif ch == 5:
+		field = "issue_no"
+		field_name = "Issue number"
+	elif ch == 6:
+		field = "page_no"
+		field_name = "Page no."
+	else:
+		print("Please choose a valid option")
+		return
+
+	print()
+
+	# get primary key of the article whose details have to be changed
+	print("Please enter the details for the concerned contribution")
+	volume_no = input("Volume number: ")
+	issue_no = input("Issue number: ")
+	page_no = input("Page no: ")
+	get_modification_details_query = "SELECT " + field + " from contribute where volume_no=" + volume_no + " AND issue_no=" + issue_no + " AND page_no=\"" + page_no + "\";"
+	to_modify = db_con(username, password, get_modification_details_query)
+	response = input("Please confirm that the " + field_name + " you want to modify is " + str(to_modify[0][0]) + " (y/n): ")
+
+	if response == "y":
+		new_field = input("New " + field_name + ": ")
+		updation_query = "UPDATE contribute SET " + field + "= \"" + new_field + "\" where volume_no=\"" + volume_no + "\" AND issue_no=\"" + issue_no + "\" AND page_no=\"" + page_no + "\";"
+
+	else:
+		return
+
+	db_con(username, password, updation_query)
+
+
 # CHANGES
 # - modify_the_contents_of_the_article -> modify_the_title_of_the_article
 # - merged tags, title, category change for article into change_article_details()
