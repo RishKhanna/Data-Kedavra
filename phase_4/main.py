@@ -11,7 +11,10 @@ def fn1():
 	cur.execute(query)
 	data = cur.fetchall()
 	for i in range(len(data)):
-		print(i,": ",data[i][0])
+		if i<10:
+			print(colored(str(i) +" : " + data[i][0], "yellow"))
+		else:
+			print(colored(str(i)+": " + data[i][0], "yellow"))
 
 # call the function depending on the option chosen
 def dispatch(ch):
@@ -23,14 +26,14 @@ def dispatch(ch):
 		modify.main(username, password)
 
 	else:
-		print("Enter a valid option.")
+		print(colored("Enter a valid option.", 'red'))
 
 
 while(1):
 	tmp = sp.call('clear', shell = True)
 
 	# get username and password through input
-	print("Type exit to exit the application")
+	print(colored("Type exit to exit the application", 'red'))
 	username = input(colored("Username: ", 'cyan'))
 	if(username == "exit"):
 		break
@@ -64,16 +67,16 @@ while(1):
 			while(1):
 				# print the options available
 				tmp = sp.call('clear', shell = True)
-				print("Which operations would you like to perform to the database?")
+				print(colored("Which operations would you like to perform to the database?", 'blue',attrs=['bold']))
 				print(colored("1. Show Tables.", 'cyan', attrs=['bold']))
 				print(colored("2. Retrival", 'cyan', attrs=['bold']))
-				print("\tincludes: \n\t\t-> Selection.\n\t\t-> Projection.\n\t\t-> Aggregate.\n\t\t-> Search.\n\t\t-> Analysis.")
+				print(colored("\tincludes: \n\t\t-> Selection.\n\t\t-> Projection.\n\t\t-> Aggregate.\n\t\t-> Search.\n\t\t-> Analysis.", 'yellow'))
 				print(colored("3. Modification", 'cyan', attrs=['bold']))
-				print("\tincludes:\n\t\t-> Insertion.\n\t\t-> Updation.\n\t\t-> Deletion.")
-				print("0. Logout")
+				print(colored("\tincludes:\n\t\t-> Insertion.\n\t\t-> Updation.\n\t\t-> Deletion.",'yellow'))
+				print(colored("0. Logout", 'red', attrs=['bold']))
 
 				# get user input for option
-				ch = int(input("Enter choice: "))
+				ch = int(input(colored("Enter choice: ",'green')))
 				tmp = sp.call('clear', shell = True)
 
 				# to exit the option list
@@ -81,10 +84,10 @@ while(1):
 					break
 				else:
 					dispatch(ch)
-					tmp = input("Press any key to CONTINUE >")
+					tmp = input(colored("Press Enter to CONTINUE >", 'green'))
 
 	# error handling
 	except Exception as e:
 		tmp = sp.call('clear', shell = True)
 		print(e)
-		tmp = input("Press Enter to CONTINUE:")
+		tmp = input(colored("Press Enter to CONTINUE:",'green'))
