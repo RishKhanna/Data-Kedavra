@@ -17,7 +17,8 @@ def main(username, password):
 		Modify Article details.
 		Modify Member details.
 		Modify Subscriber details
-		Modiy Author details""")
+		Modiy Author details
+		Modify Cartoon details""")
 	print("""3. Deletion
 		Remove a Member.
 		Delete an Article.
@@ -69,7 +70,8 @@ def main(username, password):
 		1. Modify Article details.
 		2. Modify Member details.
 		3. Modify Subscriber details.
-		4. Modify Author details""")
+		4. Modify Author details
+		5. Modify Cartoon details""")
 
 		ch2 = int(input("Enter choice: "))
 		tmp = sp.call('clear', shell = True)
@@ -84,8 +86,12 @@ def main(username, password):
 
 		elif ch2==3:
 			query = updation.modify_subscriber_details(username, password)
+
 		elif ch2 == 4:
 			query = updation.modify_author_details(username, password)
+
+		elif ch2 == 5:
+			query = updation.modify_cartoon_details(username, password)
 
 		else:
 			return

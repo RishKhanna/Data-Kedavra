@@ -232,6 +232,62 @@ def modify_author_details (username, password) :
 	db_con(username, password, updation_query)
 
 
+def modify_cartoon_details (username, password) :
+
+	# get info about all the articles
+	query = "Select * from cartoon;"
+	data = db_con(username, password, query)
+	# Display all the article details
+	print(colored("Cartoons available:", 'green', attrs=['bold']))
+	print(colored("Volume no. \tIssue no. \tTags \t\t\tImage URL \t\t\t\tCaption", 'blue'))
+	for i in data:
+		print(colored(str(i[3]) + "\t\t" + str(i[4]) + "\t\t" + str(i[2]) + "\t\t" + i[0] + "\t\t\t\t" + i[1], 'cyan'))
+	print("")
+
+	# Select the detail to change
+	print("What detail would you like to change?")
+	print("\t1. Volume Number \n\t2. Issue Number \n\t3. Tag \n\t4. Image URL \n\t5. Caption")
+	ch = int(input("Enter the number corresponsding to the selected option: "))
+
+	if ch == 1:
+		field = "volume_no"
+		field_name = "Volume number"
+	elif ch == 2:
+		field = "issue_no"
+		field_name = "Issue number"
+	elif ch == 3:
+		field = "tags"
+		field_name = "Tag"
+	elif ch == 4: 
+		field = "image_url"
+		field_name = "Image URL"
+	elif ch == 5:
+		field = "caption"
+		field_name = "Caption"
+	else:
+		print("Please choose a valid option")
+		return
+
+	print()
+
+	# get primary key of the article whose details have to be changed
+	print("Please enter the details for the concerned cartoon")
+	volume_no = input("Volume number: ")
+	issue_no = input("Issue number: ")
+	img_url = input("Image_URL: ")
+	get_modification_details_query = "SELECT " + field + " from cartoon where volume_no=" + volume_no + " AND issue_no=" + issue_no + " AND image_url=\"" + img_url + "\";"
+	to_modify = db_con(username, password, get_modification_details_query)
+	response = input("Please confirm that the " + field_name + " you want to modify is " + str(to_modify[0][0]) + " (y/n): ")
+
+	if response == "y":
+		new_field = input("New " + field_name + ": ")
+		updation_query = "UPDATE cartoon SET " + field + "= \"" + new_field + "\" where volume_no=\"" + volume_no + "\" AND issue_no=\"" + issue_no + "\" AND image_url=\"" + img_url + "\";"
+
+	else:
+		return
+
+	db_con(username, password, updation_query)
+
 
 # CHANGES
 # - modify_the_contents_of_the_article -> modify_the_title_of_the_article
