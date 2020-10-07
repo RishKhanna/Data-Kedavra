@@ -6,7 +6,8 @@ from termcolor import colored
 
 def main(username, password):
 	print(colored("Which of the following Modifications would you like to perform?",'cyan', attrs=['bold']))
-	print(colored("""1. Insertion
+	print(colored("1. Insertion", 'cyan', attrs=['bold']))
+	print(colored("""
 			Creating an Issue.
 			Adding Tags to Article.
 			Adding Categories to the Article.
@@ -14,14 +15,17 @@ def main(username, password):
 			Add a Member.
 			Add a Subscriber.
 			Add a Sponsor.""", 'yellow'))
-	print(colored("""2. Updation
+	print(colored("2. Updation", 'cyan', attrs=['bold']))
+	print(colored("""
 			Modify Article details.
 			Modify Member details.
 			Modify Subscriber details
 			Modiy Author details
 			Modify Cartoon details
-			Modify Contribution details""", "yellow"))
-	print(colored("""3. Deletion
+			Modify Contribution details
+			Modify Designer details""", "yellow"))
+	print(colored("3. Deletion", 'cyan', attrs=['bold']))
+	print(colored("""
 			Remove a Member.
 			Delete an Article.
 			Unsubscribe.
@@ -98,6 +102,9 @@ def main(username, password):
 
 		elif ch2 == 6:
 			query = updation.modify_contribution_details(username, password)
+
+		elif ch2 == 7:
+			query = updation.modify_designer_details(username, password)
 
 		else:
 			return

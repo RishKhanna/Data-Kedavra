@@ -349,6 +349,49 @@ def modify_contribution_details (username, password) :
 	db_con(username, password, updation_query)
 
 
+def modify_designer_details (username, password) :
+
+	# get info about all the articles
+	query = "Select * from designer;"
+	data = db_con(username, password, query)
+	# Display all the article details
+	print(colored("Designers available:", 'green', attrs=['bold']))
+	print(colored("ID \tLanguage", 'blue'))
+	for i in data:
+		print(colored(str(i[0]) + "\t" + str(i[1]), 'cyan'))
+	print("")
+
+	# Select the detail to change
+	print("What detail would you like to change?")
+	print("\t1. Softwares")
+	ch = int(input("Enter the number corresponsding to the selected option: "))
+
+	if ch == 1:
+		field = "softwares"
+		field_name = "Softwares"
+	else:
+		print("Please choose a valid option")
+		return
+
+	print()
+
+	# get primary key of the article whose details have to be changed
+	print("Please enter the details for the concerned Designer")
+	dsgnr_id = input("ID: ")
+	get_modification_details_query = "SELECT " + field + " from designer where id=\"" + dsgnr_id + "\";"
+	to_modify = db_con(username, password, get_modification_details_query)
+	response = input("Please confirm that the " + field_name + " you want to modify is " + str(to_modify[0][0]) + " (y/n): ")
+
+	if response == "y":
+		new_field = input("New " + field_name + ": ")
+		updation_query = "UPDATE designer SET " + field + "= \"" + new_field + "\" where id=\"" + dsgnr_id + "\";"
+
+	else:
+		return
+
+	db_con(username, password, updation_query)
+
+
 # CHANGES
 # - modify_the_contents_of_the_article -> modify_the_title_of_the_article
 # - merged tags, title, category change for article into change_article_details()
