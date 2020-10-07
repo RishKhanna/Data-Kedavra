@@ -118,10 +118,10 @@ def modify_member_details (username, password) :
 	# get primary key of the article whose details have to be changed
 	print("Please enter the details for the concerned Member")
 	member_id = input("Member ID: ")
-	get_modification_details_query = "SELECT * from members where member_id=\"" + member_id + "\";"
+	get_modification_details_query = "SELECT " + field + " from members where member_id=\"" + member_id + "\";"
 
 	to_modify = db_con(username, password, get_modification_details_query)
-	response = input("Please confirm that the " + field_name + " you want to modify is " + str(to_modify[0][ch]) + " (y/n): ")
+	response = input("Please confirm that the " + field_name + " you want to modify is " + str(to_modify[0][0]) + " (y/n): ")
 
 	if response == "y":
 		new_field = input("New " + field_name + ": ")
@@ -134,7 +134,65 @@ def modify_member_details (username, password) :
 	db_con(username, password, updation_query)
 	pass
 
-def modify_subscriber_details () :
+def modify_subscriber_details (username, password) :
+
+	# get info about all the articles
+	query = "Select * from subscribers;"
+	data = db_con(username, password, query)
+	# Display all the article details
+	print(colored("Subscribers available:", 'green', attrs=['bold']))
+	print(colored("Email \t\t\t\tSubscription type \tSubscription Date \tFirst Name \tMiddle Name \t\tLast Name", 'blue'))
+	for i in data:
+		print(colored(str(i[0]) + "\t\t" + str(i[1]) + " months \t\t" + str(i[2]) + "\t\t" + (i[3]) + "\t\t" + str(i[4]) + "\t\t\t" + str(i[5]), 'cyan'))
+	print("")
+
+	# Select the detail to change
+	print("What detail would you like to change?")
+	print("\t1. Email \n\t2. Subscription Type \n\t3. Subscription Date(YYYY-MM-DD) \n\t4. First Name \n\t5. Middle Name \n\t6. Last Name")
+	ch = int(input("Enter the number corresponsding to the selected option: "))
+
+	if ch == 1:
+		field = "email"
+		field_name = "Email"
+	elif ch == 2:
+		field = "sub_type"
+		field_name = "Subscription Type"
+	elif ch == 3:
+		field = "sub_date"
+		field_name = "Subscription date"
+	elif ch == 4:
+		field = "f_name"
+		field_name = "First Name"
+	elif ch == 5:
+		field = "m_name"
+		field_name = "Middle Name"
+	elif ch == 6:
+		field = "l_name"
+		field_name = "Last Name"
+		field_name = "Email"
+	else:
+		print("Please choose a valid option")
+		pass
+		return
+
+	print()
+
+	# get primary key of the article whose details have to be changed
+	print("Please enter the details for the concerned Subscriber")
+	email = input("email: ")
+	get_modification_details_query = "SELECT " + field + " from subscribers where email=\"" + email + "\";"
+	to_modify = db_con(username, password, get_modification_details_query)
+	response = input("Please confirm that the " + field_name + " you want to modify is " + str(to_modify[0][0]) + " (y/n): ")
+
+	if response == "y":
+		new_field = input("New " + field_name + ": ")
+		updation_query = "UPDATE subscribers SET " + field + "= \"" + new_field + "\" where email=\"" + email + "\";"
+
+	else:
+		pass
+		return
+
+	db_con(username, password, updation_query)
 	pass
 
 # CHANGES
