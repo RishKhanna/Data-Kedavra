@@ -20,7 +20,7 @@ def list_all_issues(username, password):
 
 
 def list_all_articles(username, password):
-    query = "SELECT volume_no, issue_no, title, category FROM MAGAZINE;"
+    query = "SELECT volume_no, issue_no, title, category FROM ARTICLE;"
     table = db_con(username, password, query)
     print(tabulate(table, headers=[
           'Vol No', 'Issue No', 'Title', 'Category'], tablefmt='psql'))
@@ -34,12 +34,21 @@ def list_all_authors(username, password):
 
 
 def articles_from_a_particular_magazine_issue(username, password):
-    pass
+    vol_id = input("Enter Volume No.: ")
+    iss_id = input("Enter Issue No.: ")
+    query = "SELECT ARTICLE.VOLUME_NO, ARTICLE.ISSUE_NO, TITLE, CATEGORY FROM ARTICLE WHERE VOLUME_NO=" + \
+        vol_id+" AND ISSUE_NO="+iss_id+";"
+    table = db_con(username, password, query)
+    print(tabulate(table, headers=[
+          'Vol No', 'Issue No', 'Title', 'Category'], tablefmt='psql'))
 
 
 def list_of_all_articles_written_by_an_author(username, password):
     id = input("Enter Author ID: ")
-    # Todo
+    query = "SELECT ARTICLE.VOLUME_NO, ARTICLE.ISSUE_NO, TITLE, CATEGORY FROM CONTRIBUTE INNER JOIN ARTICLE ON (CONTRIBUTE.VOLUME_NO, CONTRIBUTE.ISSUE_NO, CONTRIBUTE.PAGE_NO) = (ARTICLE.VOLUME_NO, ARTICLE.ISSUE_NO, ARTICLE.PAGE_NO) WHERE AUTHOR_ID="+id+";"
+    table = db_con(username, password, query)
+    print(tabulate(table, headers=[
+          'Vol No', 'Issue No', 'Title', 'Category'], tablefmt='psql'))
 
 
 def list_all_editors(username, password):
@@ -50,7 +59,11 @@ def list_all_editors(username, password):
 
 
 def list_of_all_articles_edited_by_an_editor(username, password):
-    pass
+    id = input("Enter Editor ID: ")
+    query = "SELECT ARTICLE.VOLUME_NO, ARTICLE.ISSUE_NO, TITLE, CATEGORY FROM CONTRIBUTE INNER JOIN ARTICLE ON (CONTRIBUTE.VOLUME_NO, CONTRIBUTE.ISSUE_NO, CONTRIBUTE.PAGE_NO) = (ARTICLE.VOLUME_NO, ARTICLE.ISSUE_NO, ARTICLE.PAGE_NO) WHERE EDITOR_ID="+id+";"
+    table = db_con(username, password, query)
+    print(tabulate(table, headers=[
+          'Vol No', 'Issue No', 'Title', 'Category'], tablefmt='psql'))
 
 
 def list_all_designers(username, password):
@@ -61,7 +74,11 @@ def list_all_designers(username, password):
 
 
 def list_of_all_articles_designed_by_a_designer(username, password):
-    pass
+    id = input("Enter Designer ID: ")
+    query = "SELECT ARTICLE.VOLUME_NO, ARTICLE.ISSUE_NO, TITLE, CATEGORY FROM CONTRIBUTE INNER JOIN ARTICLE ON (CONTRIBUTE.VOLUME_NO, CONTRIBUTE.ISSUE_NO, CONTRIBUTE.PAGE_NO) = (ARTICLE.VOLUME_NO, ARTICLE.ISSUE_NO, ARTICLE.PAGE_NO) WHERE DESIGNER_ID="+id+";"
+    table = db_con(username, password, query)
+    print(tabulate(table, headers=[
+          'Vol No', 'Issue No', 'Title', 'Category'], tablefmt='psql'))
 
 
 def show_cartoons_by_designer(username, password):
