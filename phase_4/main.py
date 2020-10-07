@@ -1,18 +1,29 @@
 import subprocess as sp
 import pymysql
 import pymysql.cursors
+import Scripts.Retrival.retrive as retrive
+import Scripts.Modification.modify as modify
+from termcolor import colored
+
 
 def fn1():
 	query = "SHOW TABLES;"
 	cur.execute(query)
 	data = cur.fetchall()
-	for i in data:
-		print(i)
+	for i in range(len(data)):
+		print(i,": ",data[i][0])
 
 # call the function depending on the option chosen
 def dispatch(ch):
 	if ch == 1:
 		fn1()
+	elif ch==2:
+		retrive.main()
+	elif ch==3:
+		modify.main(username, password)
+
+	else:
+		print("Enter a valid option.")
 
 
 while(1):
@@ -20,10 +31,10 @@ while(1):
 
 	# get username and password through input
 	print("Type exit to exit the application")
-	username = input("Username: ")
+	username = input(colored("Username: ", 'cyan'))
 	if(username == "exit"):
 		break
-	password = input("Password: ")
+	password = input(colored("Password: ", 'cyan'))
 
 	if(password == "exit"):
 		break
@@ -35,33 +46,45 @@ while(1):
 		tmp = sp.call('clear', shell = True)
 
 		# show connection status to the user
-		if(db.opencur):
-			print("Connected")
-		else:
-			print("lol F")
+		# ASK KSHITIJAA ABOUT THIS
+		# if(db.opencur):
+		# 	print("Connected")
+		# else:
+		# 	print("lol F")
 
-		tmp = input("Enter any key to CONTINUE IN THIS REALM>")
+		tmp = input(colored("Enter any key to CONTINUE IN THIS REALM>", 'green'))
 
 		with db.cursor() as cur:
+
+			# qr = "source dump.sql"
+			# cur.execute(qr)
+			# db.commit()
+
+
 			while(1):
 				# print the options available
 				tmp = sp.call('clear', shell = True)
-				print("1. Show Tables:")
-				print("2. Logout:")
+				print("Which operations would you like to perform to the database?")
+				print(colored("1. Show Tables.", 'cyan', attrs=['bold']))
+				print(colored("2. Retrival", 'cyan', attrs=['bold']))
+				print("\tincludes: \n\t\t-> Selection.\n\t\t-> Projection.\n\t\t-> Aggregate.\n\t\t-> Search.\n\t\t-> Analysis.")
+				print(colored("3. Modification", 'cyan', attrs=['bold']))
+				print("\tincludes:\n\t\t-> Insertion.\n\t\t-> Updation.\n\t\t-> Deletion.")
+				print("0. Logout")
 
 				# get user input for option
 				ch = int(input("Enter choice: "))
-				tmp = sp.call('Clear', shell = True)
+				tmp = sp.call('clear', shell = True)
 
 				# to exit the option list
-				if ch == 2:
+				if ch == 0:
 					break
 				else:
 					dispatch(ch)
-					tmp = input("Enter any key bro>")
+					tmp = input("Press any key to CONTINUE >")
 
 	# error handling
 	except Exception as e:
 		tmp = sp.call('clear', shell = True)
 		print(e)
-		tmp = input("Enter any key to CONTINUE>")
+		tmp = input("Press Enter to CONTINUE:")
