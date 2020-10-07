@@ -36,7 +36,7 @@ def list_all_authors(username, password):
 def articles_from_a_particular_magazine_issue(username, password):
     vol_id = input("Enter Volume No.: ")
     iss_id = input("Enter Issue No.: ")
-    query = "SELECT ARTICLE.VOLUME_NO, ARTICLE.ISSUE_NO, TITLE, CATEGORY FROM ARTICLE WHERE VOLUME_NO=" + \
+    query = "SELECT VOLUME_NO, ISSUE_NO, TITLE, CATEGORY FROM ARTICLE WHERE VOLUME_NO=" + \
         vol_id+" AND ISSUE_NO="+iss_id+";"
     table = db_con(username, password, query)
     print(tabulate(table, headers=[
@@ -45,7 +45,7 @@ def articles_from_a_particular_magazine_issue(username, password):
 
 def list_of_all_articles_written_by_an_author(username, password):
     id = input("Enter Author ID: ")
-    query = "SELECT ARTICLE.VOLUME_NO, ARTICLE.ISSUE_NO, TITLE, CATEGORY FROM CONTRIBUTE INNER JOIN ARTICLE ON (CONTRIBUTE.VOLUME_NO, CONTRIBUTE.ISSUE_NO, CONTRIBUTE.PAGE_NO) = (ARTICLE.VOLUME_NO, ARTICLE.ISSUE_NO, ARTICLE.PAGE_NO) WHERE AUTHOR_ID="+id+";"
+    query = "SELECT ARTICLE.VOLUME_NO, ARTICLE.ISSUE_NO, TITLE, CATEGORY FROM CONTRIBUTE INNER JOIN ARTICLE ON (CONTRIBUTE.VOLUME_NO, CONTRIBUTE.ISSUE_NO, CONTRIBUTE.PAGE_NO) = (ARTICLE.VOLUME_NO, ARTICLE.ISSUE_NO, ARTICLE.PAGE_NO) WHERE AUTHOR_ID=" + id + ";"
     table = db_con(username, password, query)
     print(tabulate(table, headers=[
           'Vol No', 'Issue No', 'Title', 'Category'], tablefmt='psql'))
@@ -82,15 +82,29 @@ def list_of_all_articles_designed_by_a_designer(username, password):
 
 
 def show_cartoons_by_designer(username, password):
-    pass
+    id = input("Enter Designer ID: ")
+    query = "SELECT CARTOON.VOLUME_NO, CARTOON.ISSUE_NO, CAPTION, IMAGE_URL, TAGS FROM DRAWS INNER JOIN CARTOON ON DRAWS.CARTOON=CARTOON.IMAGE_URL WHERE DESIGNER_ID="+id+";"
+    table = db_con(username, password, query)
+    print(tabulate(table, headers=[
+          'Vol No', 'Issue No', 'Caption', 'Cartoon URL', 'Tags'], tablefmt='psql'))
 
 
 def show_cartoons_from_a_particular_issue(username, password):
-    pass
+    vol_id = input("Enter Volume No.: ")
+    iss_id = input("Enter Issue No.: ")
+    query = "SELECT VOLUME_NO, ISSUE_NO, CAPTION, IMAGE_URL, TAGS FROM CARTOON WHERE VOLUME_NO=" + \
+        vol_id+" AND ISSUE_NO="+iss_id+";"
+    table = db_con(username, password, query)
+    print(tabulate(table, headers=[
+          'Vol No', 'Issue No', 'Caption', 'Cartoon URL', 'Tags'], tablefmt='psql'))
 
 
 def show_cartoons_from_a_particular_volume(username, password):
-    pass
+    vol_id = input("Enter Volume No.: ")
+    query = "SELECT VOLUME_NO, ISSUE_NO, CAPTION, IMAGE_URL, TAGS FROM CARTOON WHERE VOLUME_NO="+vol_id+";"
+    table = db_con(username, password, query)
+    print(tabulate(table, headers=[
+          'Vol No', 'Issue No', 'Caption', 'Cartoon URL', 'Tags'], tablefmt='psql'))
 
 
 def subscribers_for_a_given_volume(username, password):
