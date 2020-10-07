@@ -14,10 +14,7 @@ def main(username, password):
 		Add a Subscriber.
 		Add a Sponsor.""")
 	print("""2. Updation
-		Modify the contents of the Article.
-		Change the issue of an Article.
-		Change the tags in an Article.
-		Change the categories in an Article.
+		Change the details of an Article.
 		Modify Member details.
 		Modify Subscriber details""")
 	print("""3. Deletion
@@ -68,12 +65,9 @@ def main(username, password):
 	elif ch==2:
 		print("Which of the following Updations would you like to do?")
 		print("""
-		1. Modify the title of the Article.
-		2. Change the issue of an Article.
-		3. Change the tags in an Article.
-		4. Change the categories in an Article.
-		5. Modify Member details.
-		6. Modify Subscriber details.""")
+		1. Change the details of an Article.
+		2. Modify Member details.
+		3. Modify Subscriber details.""")
 
 		ch2 = int(input("Enter choice: "))
 		tmp = sp.call('clear', shell = True)
@@ -81,22 +75,13 @@ def main(username, password):
 		# 
 		#
 		if ch2==1:
-			query = updation.modify_the_title_of_the_article(username, password)
+			query = updation.change_article_details(username, password)
 
 		elif ch2==2:
-			query = updation.change_the_issue_of_an_article(username, password)
+			query = updation.modify_member_details(username, password)
 
 		elif ch2==3:
-			query = updation.change_the_tags_in_an_article()
-
-		elif ch2==4:
-			query = updation.change_the_categories_in_an_article()
-
-		elif ch2==5:
-			query = updation.modify_member_details()
-
-		elif ch2==6:
-			query = updation.modify_subscriber_details()
+			query = updation.modify_subscriber_details(username, password)
 
 		else:
 			return

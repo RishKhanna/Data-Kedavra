@@ -3,6 +3,8 @@ import pymysql
 import pymysql.cursors
 import Scripts.Retrival.retrive as retrive
 import Scripts.Modification.modify as modify
+from termcolor import colored
+
 
 def fn1():
 	query = "SHOW TABLES;"
@@ -29,10 +31,10 @@ while(1):
 
 	# get username and password through input
 	print("Type exit to exit the application")
-	username = input("Username: ")
+	username = input(colored("Username: ", 'cyan'))
 	if(username == "exit"):
 		break
-	password = input("Password: ")
+	password = input(colored("Password: ", 'cyan'))
 
 	if(password == "exit"):
 		break
@@ -50,7 +52,7 @@ while(1):
 		# else:
 		# 	print("lol F")
 
-		tmp = input("Enter any key to CONTINUE IN THIS REALM>")
+		tmp = input(colored("Enter any key to CONTINUE IN THIS REALM>", 'green'))
 
 		with db.cursor() as cur:
 
@@ -63,10 +65,10 @@ while(1):
 				# print the options available
 				tmp = sp.call('clear', shell = True)
 				print("Which operations would you like to perform to the database?")
-				print("1. Show Tables.")
-				print("2. Retrival")
+				print(colored("1. Show Tables.", 'cyan', attrs=['bold']))
+				print(colored("2. Retrival", 'cyan', attrs=['bold']))
 				print("\tincludes: \n\t\t-> Selection.\n\t\t-> Projection.\n\t\t-> Aggregate.\n\t\t-> Search.\n\t\t-> Analysis.")
-				print("3. Modification")
+				print(colored("3. Modification", 'cyan', attrs=['bold']))
 				print("\tincludes:\n\t\t-> Insertion.\n\t\t-> Updation.\n\t\t-> Deletion.")
 				print("0. Logout")
 
