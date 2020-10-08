@@ -43,7 +43,7 @@ def main(username, password):
 		print(colored("Which of the following Insertions would you like to do?", 'cyan', attrs=['bold']),end="")
 		print(colored("""
 				1. Creating an Issue.
-				2. Adding Categories to the Article.
+				2. Add an Author.
 				3. Add a Member.
 				4. Add a Subscriber.
 				5. Add a Sponsor.""",'yellow'))
@@ -57,7 +57,7 @@ def main(username, password):
 			query = insertion.creating_an_issue(username, password)
 
 		elif ch2==2:
-			query = insertion.adding_categories_to_the_article(username, password)
+			query = insertion.add_an_author(username, password)
 
 		elif ch2==3:
 			query = insertion.add_a_member(username, password)

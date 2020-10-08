@@ -24,9 +24,65 @@ def creating_an_issue (username, password) :
 	db_con(username, password, query)
 
 
-# add a category for article
-def adding_categories_to_the_article () :
-	pass
+# add a author
+def add_an_author () :
+	print("Members available: ")
+	retrieval_query = "SELECT * from members"
+	data = db_con(username, password, retrieval_query)
+    print(tabulate(data, headers=[
+          'Member ID', 'First Name', 'Middle Name', 'Last Name', 'Join Date', 'Superviser ID', 'Email'], tablefmt='psql'))
+
+    print("Add an author:")
+    auth_id = input("Author ID: ")
+    language = input("Language the author works in: ")
+
+    insertion_query = "INSERT into author values (" + auth_id + ", \"" + language + "\");"
+
+
+# add a designer
+def add_a_designer () :
+	print("Members available: ")
+	retrieval_query = "SELECT * from members"
+	data = db_con(username, password, retrieval_query)
+    print(tabulate(data, headers=[
+          'Member ID', 'First Name', 'Middle Name', 'Last Name', 'Join Date', 'Superviser ID', 'Email'], tablefmt='psql'))
+
+    print("Add a designer:")
+    auth_id = input("Designer ID: ")
+    software = input("Software the designer works in: ")
+
+    insertion_query = "INSERT into designer values (" + auth_id + ", \"" + software + "\");"
+
+
+
+# add a editor
+def add_an_editor () :
+	print("Members available: ")
+	retrieval_query = "SELECT * from members"
+	data = db_con(username, password, retrieval_query)
+    print(tabulate(data, headers=[
+          'Member ID', 'First Name', 'Middle Name', 'Last Name', 'Join Date', 'Superviser ID', 'Email'], tablefmt='psql'))
+
+    print("Add an editor:")
+    auth_id = input("Editor ID: ")
+    genre = input("Genre the editor works in: ")
+
+    insertion_query = "INSERT into editor values (" + auth_id + ", \"" + genre + "\");"
+
+
+# add a editor
+def add_a_marketer () :
+	print("Members available: ")
+	retrieval_query = "SELECT * from members"
+	data = db_con(username, password, retrieval_query)
+    print(tabulate(data, headers=[
+          'Member ID', 'First Name', 'Middle Name', 'Last Name', 'Join Date', 'Superviser ID', 'Email'], tablefmt='psql'))
+
+    print("Add a marketer:")
+    auth_id = input("Marketer ID: ")
+    platform = input("Platform the marketer works with: ")
+
+    insertion_query = "INSERT into marketing values (" + auth_id + ", \"" + platform + "\");"
 
 
 # add a record for sponsor
