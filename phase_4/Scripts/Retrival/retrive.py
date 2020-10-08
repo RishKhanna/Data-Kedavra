@@ -197,10 +197,10 @@ def main(username, password):
         #
         #
         if ch2 == 1:
-            search.search_articles_by_name()
+            search.search_articles_by_name(username, password)
 
         elif ch2 == 2:
-            search.search_members_by_name()
+            search.search_members_by_name(username, password)
 
         else:
             return
