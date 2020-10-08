@@ -171,13 +171,15 @@ def main(username, password):
         #
         #
         if ch2 == 1:
-            aggregate.average_number_of_subscribers_for_a_volume()
+            aggregate.average_number_of_subscribers_for_a_volume(
+                username, password)
 
         elif ch2 == 2:
-            aggregate.total_number_of_articles_in_a_volume()
+            aggregate.total_number_of_articles_in_a_volume(username, password)
 
         elif ch2 == 3:
-            aggregate.subscription_change_between_two_given_dates()
+            aggregate.subscription_change_between_two_given_dates(
+                username, password)
 
         else:
             return
@@ -220,10 +222,12 @@ def main(username, password):
         #
         #
         if ch2 == 1:
-            analysis.most_frequent_category_of_articles_written_by_each_author()
+            analysis.most_frequent_category_of_articles_written_by_each_author(
+                username, password)
 
         elif ch2 == 2:
-            analysis.list_of_subscribers_who_subscribed_between_two_consecutive_volumes()
+            analysis.list_of_subscribers_who_subscribed_between_two_consecutive_volumes(
+                username, password)
 
         else:
             return
