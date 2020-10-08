@@ -57,7 +57,7 @@ def add_a_designer (username, password) :
 
 
 
-# add a editor
+# add an editor
 def add_an_editor (username, password) :
 	print("Members available: ")
 	retrieval_query = "SELECT * from members"
@@ -73,7 +73,7 @@ def add_an_editor (username, password) :
 	db_con(username, password, query)
 
 
-# add a editor
+# add a marketer
 def add_a_marketer (username, password) :
 	print("Members available: ")
 	retrieval_query = "SELECT * from members"
@@ -89,7 +89,7 @@ def add_a_marketer (username, password) :
 	db_con(username, password, query)
 
 
-# add a record for sponsor
+# add a record for member
 def add_a_member (username, password) :
 	print("Add a member:")
 	member_id = input("Member ID: ")

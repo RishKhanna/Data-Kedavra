@@ -10,7 +10,7 @@ def db_con(username, password, query):
 	return data
 
 def remove_a_member (username, password) :
-	ssn = input("Enter the ID of the member to the removed:")
+	ssn = input("Enter the ID of the member to the removed: ")
 	query = "DELETE FROM Members WHERE member_id=" + ssn
 	data = db_con(username, password, query)
 	# author
@@ -28,9 +28,9 @@ def remove_a_member (username, password) :
 	return
 
 def delete_an_article (username, password) :
-	vol = input("Enter the Volume of the Article to the removed:")
-	issue = input("Enter the Issue of the Article to the removed:")
-	page = input("Enter the Page No. of the Article to the removed:")
+	vol = input("Enter the Volume of the Article to the removed: ")
+	issue = input("Enter the Issue of the Article to the removed: ")
+	page = input("Enter the Page No. of the Article to the removed: ")
 	# article
 	query = "DELETE FROM article WHERE volume_no=" + vol + " AND issue_no=" + issue + " AND page_no=" + page
 	data = db_con(username, password, query)
