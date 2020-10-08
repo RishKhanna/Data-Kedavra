@@ -16,6 +16,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Current Database: `data_kedavra`
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `data_kedavra` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+
+USE `data_kedavra`;
+--
 -- Table structure for table `article`
 --
 
@@ -397,27 +404,6 @@ UNLOCK TABLES;
 -- Table structure for table `supervise`
 --
 
-DROP TABLE IF EXISTS `supervise`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `supervise` (
-  `member` int DEFAULT NULL,
-  `supervisor` int DEFAULT NULL,
-  KEY `member` (`member`),
-  KEY `superviser` (`supervisor`),
-  CONSTRAINT `supervise_ibfk_1` FOREIGN KEY (`member`) REFERENCES `members` (`member_id`),
-  CONSTRAINT `supervise_ibfk_2` FOREIGN KEY (`supervisor`) REFERENCES `members` (`member_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `supervise`
---
-
-LOCK TABLES `supervise` WRITE;
-/*!40000 ALTER TABLE `supervise` DISABLE KEYS */;
-/*!40000 ALTER TABLE `supervise` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
