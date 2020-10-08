@@ -16,5 +16,5 @@
 |---------------|-----------------------------|----------------------------------|
 | 1             | `SHOW TABLES`               | Shows the tables in the database |
 | 2				| `Retrive Data`				  | Retrive pre-existing data        |
-| 2				| `Modify Data`				  | Modify pre-existing data         |
-| 3             | `exit`                      | Exits the database        		 |
+| 3				| `Modify Data`				  | Modify pre-existing data         |
+| 4             | `exit`                      | Exits the database        		 |
