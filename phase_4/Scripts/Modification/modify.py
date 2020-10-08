@@ -127,16 +127,16 @@ def main(username, password):
 		# 
 		#
 		if ch2==1:
-			query = deletion.remove_a_member()
+			query = deletion.remove_a_member(username, password)
 
 		elif ch2==2:
-			query = deletion.delete_an_article()
+			query = deletion.delete_an_article(username, password)
 
 		elif ch2==3:
-			query = deletion.unsubscribe()
+			query = deletion.unsubscribe(username, password)
 
 		elif ch2==4:
-			query = deletion.remove_a_sponsor()
+			query = deletion.remove_a_sponsor(username, password)
 
 		else:
 			return
