@@ -24,11 +24,11 @@ def main(username, password):
 			Modify Cartoon details
 			Modify Contribution details
 			Modify Designer details
-			Modify Cartoon Designer details
+			Modify Draws Details
 			Modify Editor details
 			Modify Magazine details
 			Modify Marketing details
-			Modify Sponsor and Marketer details""", "yellow"))
+			Modify Selling Advert Details""", "yellow"))
 	print(colored("3. Deletion", 'cyan', attrs=['bold']))
 	print(colored("""
 			Remove a Member.
@@ -85,11 +85,11 @@ def main(username, password):
 				5. Modify Cartoon details
 				6. Modify Contribution details
 				7. Modify Designer details
-				8. Modify Cartoon Designer details
+				8. Modify Draws details
 				9. Modify Editor details
 				10. Modify Magazine details
 				11. Modify Marketing details
-				12. Modify Sponsor and Marketer details""", 'yellow'))
+				12. Modify Selling Advert Details""", 'yellow'))
 
 		ch2 = int(input(colored("Enter choice: ",'green')))
 		tmp = sp.call('clear', shell = True)
