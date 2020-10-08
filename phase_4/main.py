@@ -50,7 +50,7 @@ while(1):
 
 		# show connection status to the user
 		# ASK KSHITIJAA ABOUT THIS
-		# if(db.opencur):
+		# if(db.open):
 		# 	print("Connected")
 		# else:
 		# 	print("lol F")
