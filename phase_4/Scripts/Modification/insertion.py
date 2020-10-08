@@ -112,6 +112,58 @@ def add_a_member (username, password) :
 	db_con(username, password, query)
 
 
+
+def add_an_advert (username, password) :
+	print("Magazines available: ")
+	retrieval_query = "SELECT * from magazine"
+	data = db_con(username, password, retrieval_query)
+	print(tabulate(data, headers=[
+		'Volume No.', 'Issue No.', 'Date'], tablefmt='psql'))
+
+	print("Subscribers available: ")
+	retrieval_query = "SELECT * from marketing"
+	data = db_con(username, password, retrieval_query)
+	print(tabulate(data, headers=[
+		'ID', 'Platforms'], tablefmt='psql'))
+
+	print("Add an advert:")
+	sp_id = input("Sponsor ID: ")
+	mkt_id = input("Marketer ID: ")
+
+	query = "INSERT into selling_advert values (" + sp_id + ", " + mkt_id + ");"
+	db_con(username, password, query)
+	print("Sponsors available: ")
+	retrieval_query = "SELECT * from sponsors"
+	data = db_con(username, password, retrieval_query)
+	print(tabulate(data, headers=[
+		'Sponsor ID', 'Product', 'Payment'], tablefmt='psql'))
+
+	print("Marketers available: ")
+	retrieval_query = "SELECT * from marketing"
+	data = db_con(username, password, retrieval_query)
+	print(tabulate(data, headers=[
+		'ID', 'Platforms'], tablefmt='psql'))
+
+	print("Add an advert:")
+	sp_id = input("Sponsor ID: ")
+	mkt_id = input("Marketer ID: ")
+
+	query = "INSERT into selling_advert values (" + sp_id + ", " + mkt_id + ");"
+	db_con(username, password, query)
+
+
+# add a record for sponsor
+def add_a_sponsor (username, password) :
+	print("Add a sponsor:")
+	sponsor_id = input("Sponsor ID: ")
+	product = input("Product: ")
+	payment = input("Payment (Credit/ Net Banking): ")
+
+	query = "INSERT into sponsors values (" + sponsor_id + ", \"" + product + "\", \"" + payment + "\");"
+
+	db_con(username, password, query)
+
+
 # add a record for subscriber
 def add_a_subscriber (username, password) :
 	print("Add a subscriber:")
@@ -134,17 +186,26 @@ def add_a_subscriber (username, password) :
 	db_con(username, password, query)
 
 
-# add a record for sponsor
-def add_a_sponsor (username, password) :
-	print("Add a sponsor:")
-	sponsor_id = input("Sponsor ID: ")
-	product = input("Product: ")
-	payment = input("Payment (Credit/ Net Banking): ")
+def add_a_subscription (username, password) :
+	print("Sponsors available: ")
+	retrieval_query = "SELECT * from sponsors"
+	data = db_con(username, password, retrieval_query)
+	print(tabulate(data, headers=[
+		'Sponsor ID', 'Product', 'Payment'], tablefmt='psql'))
 
-	query = "INSERT into sponsors values (" + sponsor_id + ", \"" + product + "\", \"" + payment + "\");"
+	print("Subscribers available: ")
+	retrieval_query = "SELECT * from subscribers"
+	data = db_con(username, password, retrieval_query)
+	print(tabulate(data, headers=[
+		'Email', 'Subscription Type', 'Subscription Date', 'First Name', 'Middle Name', 'Last Name'], tablefmt='psql'))
 
+	print("Add a Subscription:")
+	vol = input("Volume No.: ")
+	issue = input("Issue No.: ")
+	subsc = input("Subscriber Email: ")
+
+	query = "INSERT into subscribes values (" + vol + ", " + issue + ", \"" + subsc + "\");"
 	db_con(username, password, query)
-
 
 
 # CHANGES:
