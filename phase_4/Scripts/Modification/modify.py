@@ -23,7 +23,12 @@ def main(username, password):
 			Modiy Author details
 			Modify Cartoon details
 			Modify Contribution details
-			Modify Designer details""", "yellow"))
+			Modify Designer details
+			Modify Cartoon Designer details
+			Modify Editor details
+			Modify Magazine details
+			Modify Marketing details
+			Modify Sponsor and Marketer details""", "yellow"))
 	print(colored("3. Deletion", 'cyan', attrs=['bold']))
 	print(colored("""
 			Remove a Member.
@@ -78,7 +83,13 @@ def main(username, password):
 				3. Modify Subscriber details.
 				4. Modify Author details
 				5. Modify Cartoon details
-				6. Modify Contribution details""", 'yellow'))
+				6. Modify Contribution details
+				7. Modify Designer details
+				8. Modify Cartoon Designer details
+				9. Modify Editor details
+				10. Modify Magazine details
+				11. Modify Marketing details
+				12. Modify Sponsor and Marketer details""", 'yellow'))
 
 		ch2 = int(input(colored("Enter choice: ",'green')))
 		tmp = sp.call('clear', shell = True)
@@ -105,6 +116,21 @@ def main(username, password):
 
 		elif ch2 == 7:
 			query = updation.modify_designer_details(username, password)
+
+		elif ch2 == 8:
+			query = updation.modify_draws_details(username, password)
+
+		elif ch2 == 9:
+			query = updation.modify_editor_details(username, password)
+
+		elif ch2 == 10:
+			query = updation.modify_magazine_details(username, password)
+
+		elif ch2 == 11:
+			query = updation.modify_marketing_details(username, password)
+
+		elif ch2 == 12:
+			query = updation.modify_selling_advert_details(username, password)
 
 		else:
 			return

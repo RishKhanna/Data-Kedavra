@@ -392,6 +392,241 @@ def modify_designer_details (username, password) :
 	db_con(username, password, updation_query)
 
 
+def modify_draws_details (username, password) :
+
+	# get info about all the articles
+	query = "Select * from draws;"
+	data = db_con(username, password, query)
+	# Display all the article details
+	print(colored("Designers and their drawings available:", 'green', attrs=['bold']))
+	print(colored("ID \tCartoon", 'blue'))
+	for i in data:
+		print(colored(str(i[1]) + "\t" + str(i[0]), 'cyan'))
+	print("")
+
+	# Select the detail to change
+	print("What detail would you like to change?")
+	print("\t1. Cartoon")
+	ch = int(input("Enter the number corresponsding to the selected option: "))
+
+	if ch == 1:
+		field = "cartoon"
+		field_name = "Cartoon"
+	else:
+		print("Please choose a valid option")
+		return
+
+	print()
+
+	# get primary key of the article whose details have to be changed
+	print("Please enter the details for the concerned Cartoon")
+	dsgnr_id = input("ID: ")
+	get_modification_details_query = "SELECT " + field + " from draws where designer_id=" + dsgnr_id + ";"
+	to_modify = db_con(username, password, get_modification_details_query)
+	response = input("Please confirm that the " + field_name + " you want to modify is " + str(to_modify[0][0]) + " (y/n): ")
+
+	if response == "y":
+		new_field = input("New " + field_name + ": ")
+		updation_query = "UPDATE draws SET " + field + "= \"" + new_field + "\" where designer_id=" + dsgnr_id + ";"
+
+	else:
+		return
+
+	db_con(username, password, updation_query)
+
+
+def modify_editor_details (username, password) :
+
+	# get info about all the articles
+	query = "Select * from editor;"
+	data = db_con(username, password, query)
+	# Display all the article details
+	print(colored("Editors available:", 'green', attrs=['bold']))
+	print(colored("ID \tLanguage", 'blue'))
+	for i in data:
+		print(colored(str(i[0]) + "\t" + str(i[1]), 'cyan'))
+	print("")
+
+	# Select the detail to change
+	print("What detail would you like to change?")
+	print("\t1. Genres")
+	ch = int(input("Enter the number corresponsding to the selected option: "))
+
+	if ch == 1:
+		field = "genres"
+		field_name = "Genres"
+	else:
+		print("Please choose a valid option")
+		return
+
+	print()
+
+	# get primary key of the article whose details have to be changed
+	print("Please enter the details for the concerned Editor")
+	edit_id = input("ID: ")
+	get_modification_details_query = "SELECT " + field + " from editor where id=\"" + edit_id + "\";"
+	to_modify = db_con(username, password, get_modification_details_query)
+	response = input("Please confirm that the " + field_name + " you want to modify is " + str(to_modify[0][0]) + " (y/n): ")
+
+	if response == "y":
+		new_field = input("New " + field_name + ": ")
+		updation_query = "UPDATE editor SET " + field + "= \"" + new_field + "\" where id=\"" + edit_id + "\";"
+
+	else:
+		return
+
+	db_con(username, password, updation_query)
+
+
+def modify_magazine_details (username, password) :
+
+	# get info about all the articles
+	query = "Select * from magazine;"
+	data = db_con(username, password, query)
+	# Display all the article details
+	print(colored("Articles available:", 'green', attrs=['bold']))
+	print(colored("volume_no \tissue_no \tdate", 'blue'))
+	for i in data:
+		print(colored(str(i[0]) + "\t\t" + str(i[1]) + "\t\t" + str(i[2]), 'cyan'))
+	print("")
+
+	# Select the detail to change
+	print("What detail would you like to change?")
+	print("\t1. Volume Number \n\t2. Issue Number \n\t3. Date")
+	ch = int(input("Enter the number corresponsding to the selected option: "))
+
+	if ch == 1:
+		field = "volume_no"
+		field_name = "Volume number"
+	elif ch == 2:
+		field = "issue_no"
+		field_name = "Issue number"
+	elif ch == 3:
+		field = "date"
+		field_name = "Date"
+	else:
+		print("Please choose a valid option")
+		return
+
+	print()
+
+	# get primary key of the article whose details have to be changed
+	print("Please enter the details for the concerned article")
+	volume_no = input("Volume number: ")
+	issue_no = input("Issue number: ")
+	date = input("Date (YYYY-MM-DD): ")
+	get_modification_details_query = "SELECT * from magazine where volume_no=" + volume_no + " AND issue_no=" + issue_no + " AND date=\"" + date + "\";"
+
+	to_modify = db_con(username, password, get_modification_details_query)
+	response = input("Please confirm that the " + field_name + " you want to modify is " + str(to_modify[0][ch-1]) + " (y/n): ")
+
+	if response == "y":
+		new_field = input("New " + field_name + ": ")
+		updation_query = "UPDATE magazine SET " + field + "= " + new_field + " where volume_no=" + volume_no + " AND issue_no=\"" + issue_no + "\" AND date=\"" + date + "\";"
+
+	else:
+		return
+
+	db_con(username, password, updation_query)
+
+#
+def modify_marketing_details (username, password) :
+
+	# get info about all the articles
+	query = "Select * from marketing;"
+	data = db_con(username, password, query)
+	# Display all the article details
+	print(colored("Marketers available:", 'green', attrs=['bold']))
+	print(colored("ID \tPlatforms", 'blue'))
+	for i in data:
+		print(colored(str(i[0]) + "\t" + str(i[1]), 'cyan'))
+	print("")
+
+	# Select the detail to change
+	print("What detail would you like to change?")
+	print("\t1. Platforms")
+	ch = int(input("Enter the number corresponsding to the selected option: "))
+
+	if ch == 1:
+		field = "platforms"
+		field_name = "Platforms"
+	else:
+		print("Please choose a valid option")
+		return
+
+	print()
+
+	# get primary key of the article whose details have to be changed
+	print("Please enter the details for the concerned Marketer")
+	mkt_id = input("ID: ")
+	get_modification_details_query = "SELECT " + field + " from marketing where id=\"" + mkt_id + "\";"
+	to_modify = db_con(username, password, get_modification_details_query)
+	response = input("Please confirm that the " + field_name + " you want to modify is " + str(to_modify[0][0]) + " (y/n): ")
+
+	if response == "y":
+		new_field = input("New " + field_name + ": ")
+		updation_query = "UPDATE marketing SET " + field + "= \"" + new_field + "\" where id=\"" + mkt_id + "\";"
+
+	else:
+		return
+
+	db_con(username, password, updation_query)
+
+
+def modify_selling_advert_details (username, password) :
+
+	# get info about all the articles
+	query = "Select * from selling_advert;"
+	data = db_con(username, password, query)
+	# Display all the article details
+	print(colored("Sponsors available:", 'green', attrs=['bold']))
+	print(colored("Sponsor ID \tMarketer ID", 'blue'))
+	for i in data:
+		print(colored(str(i[0]) + "\t" + str(i[1]), 'cyan'))
+	print("")
+
+	# Select the detail to change
+	print("What detail would you like to change?")
+	print("\t1. Sponsor ID\n\t2. Marketer ID")
+	ch = int(input("Enter the number corresponding to the selected option: "))
+
+	if ch == 1:
+		field = "sponsor_id"
+		field_name = "Sponsor ID"
+	elif ch == 2:
+		field = "marketers_id"
+		field_name = "Marketer ID"
+	else:
+		print("Please choose a valid option")
+		return
+
+	print()
+
+	# get primary key of the article whose details have to be changed
+	print("Please enter the details for the concerned record")
+	spon_id = input("Sponsor ID: ")
+	mkt_id = input("Marketer ID: ")
+	get_modification_details_query = "SELECT " + field + " from selling_advert where sponsor_id=\"" + spon_id + "\" and marketers_id = \"" + mkt_id + "\";"
+	to_modify = db_con(username, password, get_modification_details_query)
+	response = input("Please confirm that the " + field_name + " you want to modify is " + str(to_modify[0][0]) + " (y/n): ")
+
+	if response == "y":
+		new_field = input("New " + field_name + ": ")
+		updation_query = "UPDATE selling_advert SET " + field + "= \"" + new_field + "\" where sponsor_id=\"" + spon_id + "\" and marketers_id = \"" + mkt_id + "\";"
+
+	else:
+		return
+
+	db_con(username, password, updation_query)
+
+
+# def modify_sponsors_details (username, password) :
+
+
+# def modify_subscribes_details (username, password) :
+
+
+
 # CHANGES
 # - modify_the_contents_of_the_article -> modify_the_title_of_the_article
 # - merged tags, title, category change for article into change_article_details()
