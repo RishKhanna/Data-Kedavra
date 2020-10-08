@@ -21,16 +21,31 @@ def issues_in_a_volume(username, password):
 
 
 def articles_with_a_particular_category(username, password):
-    pass
+    cat = input("Enter Category: ")
+    query = "SELECT volume_no, issue_no, title, category FROM ARTICLE WHERE CATEGORY LIKE'%" + cat + "%';"
+    table = db_con(username, password, query)
+    print(tabulate(table, headers=[
+          'Vol No', 'Issue No', 'Title', 'Category'], tablefmt='psql'))
 
 
 def sort_articles_by_name(username, password):
-    pass
+    query = "SELECT volume_no, issue_no, title, category FROM ARTICLE ORDER BY TITLE;"
+    table = db_con(username, password, query)
+    print(tabulate(table, headers=[
+          'Vol No', 'Issue No', 'Title', 'Category'], tablefmt='psql'))
 
 
 def show_cartoons_with_a_particular_tag(username, password):
-    pass
+    tag = input("Search Tag: ")
+    query = "SELECT VOLUME_NO, ISSUE_NO, CAPTION, IMAGE_URL, TAGS FROM CARTOON WHERE TAGS LIKE'%" + tag + "%';"
+    table = db_con(username, password, query)
+    print(tabulate(table, headers=[
+          'Vol No', 'Issue No', 'Caption', 'Cartoon URL', 'Tags'], tablefmt='psql'))
 
 
 def subscribers_with_a_particular_subscription_type(username, password):
-    pass
+    subtype = input("Subscription Type (1, 2 or 3): ")
+    query = "SELECT F_NAME, M_NAME, L_NAME, EMAIL FROM SUBSCRIBERS WHERE SUB_TYPE="+subtype+";"
+    table = db_con(username, password, query)
+    print(tabulate(table, headers=[
+          'First Name', 'Middle Name', 'Last Name', 'E-Mail'], tablefmt='psql'))
