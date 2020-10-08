@@ -137,19 +137,20 @@ def main(username, password):
         #
         #
         if ch2 == 1:
-            projection.issues_in_a_volume()
+            projection.issues_in_a_volume(username, password)
 
         elif ch2 == 2:
-            projection.articles_with_a_particular_category()
+            projection.articles_with_a_particular_category(username, password)
 
         elif ch2 == 3:
-            projection.sort_articles_by_name()
+            projection.sort_articles_by_name(username, password)
 
         elif ch2 == 4:
-            projection.show_cartoons_with_a_particular_tag()
+            projection.show_cartoons_with_a_particular_tag(username, password)
 
         elif ch2 == 5:
-            projection.subscribers_with_a_particular_subscription_type()
+            projection.subscribers_with_a_particular_subscription_type(
+                username, password)
 
         else:
             return
