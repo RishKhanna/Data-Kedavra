@@ -5,7 +5,7 @@ import Scripts.Modification.updation as updation
 from termcolor import colored
 
 def main(username, password):
-	print(colored("Which of the following Modifications would you like to perform?",'cyan', attrs=['bold']))
+	print(colored("Which of the following Modifications would you like to perform?",'blue', attrs=['bold']))
 	print(colored("1. Insertion", 'cyan', attrs=['bold']))
 	print(colored("""
 			Creating an Issue.
