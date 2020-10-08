@@ -15,6 +15,6 @@
 | Option Number | Corresponding MySQL command | Description                      |
 |---------------|-----------------------------|----------------------------------|
 | 1             | `SHOW TABLES`               | Shows the tables in the database |
-| 2				| `Modify Data`				  | Retrive pre-existing data        |
+| 2				| `Retrive Data`				  | Retrive pre-existing data        |
 | 2				| `Modify Data`				  | Modify pre-existing data         |
 | 3             | `exit`                      | Exits the database        		 |
