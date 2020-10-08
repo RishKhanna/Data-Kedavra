@@ -1,5 +1,6 @@
 import pymysql
 import pymysql.cursors
+from tabulate import tabulate
 
 def db_con(username, password, query):
 	db = pymysql.connect("localhost", username, password, "data_kedavra")
@@ -25,64 +26,67 @@ def creating_an_issue (username, password) :
 
 
 # add a author
-def add_an_author () :
+def add_an_author (username, password) :
 	print("Members available: ")
 	retrieval_query = "SELECT * from members"
 	data = db_con(username, password, retrieval_query)
-    print(tabulate(data, headers=[
-          'Member ID', 'First Name', 'Middle Name', 'Last Name', 'Join Date', 'Superviser ID', 'Email'], tablefmt='psql'))
+	print(tabulate(data, headers=['Member ID', 'First Name', 'Middle Name', 'Last Name', 'Join Date', 'Superviser ID', 'Email'], tablefmt='psql'))
 
-    print("Add an author:")
-    auth_id = input("Author ID: ")
-    language = input("Language the author works in: ")
+	print("Add an author:")
+	auth_id = input("Author ID: ")
+	language = input("Language the author works in: ")
 
-    insertion_query = "INSERT into author values (" + auth_id + ", \"" + language + "\");"
+	query = "INSERT into author values (" + auth_id + ", \"" + language + "\");"
+	db_con(username, password, query)
 
 
 # add a designer
-def add_a_designer () :
+def add_a_designer (username, password) :
 	print("Members available: ")
 	retrieval_query = "SELECT * from members"
 	data = db_con(username, password, retrieval_query)
-    print(tabulate(data, headers=[
-          'Member ID', 'First Name', 'Middle Name', 'Last Name', 'Join Date', 'Superviser ID', 'Email'], tablefmt='psql'))
+	print(tabulate(data, headers=[
+		'Member ID', 'First Name', 'Middle Name', 'Last Name', 'Join Date', 'Superviser ID', 'Email'], tablefmt='psql'))
 
-    print("Add a designer:")
-    auth_id = input("Designer ID: ")
-    software = input("Software the designer works in: ")
+	print("Add a designer:")
+	auth_id = input("Designer ID: ")
+	software = input("Software the designer works in: ")
 
-    insertion_query = "INSERT into designer values (" + auth_id + ", \"" + software + "\");"
+	query = "INSERT into designer values (" + auth_id + ", \"" + software + "\");"
+	db_con(username, password, query)
 
 
 
 # add a editor
-def add_an_editor () :
+def add_an_editor (username, password) :
 	print("Members available: ")
 	retrieval_query = "SELECT * from members"
 	data = db_con(username, password, retrieval_query)
-    print(tabulate(data, headers=[
-          'Member ID', 'First Name', 'Middle Name', 'Last Name', 'Join Date', 'Superviser ID', 'Email'], tablefmt='psql'))
+	print(tabulate(data, headers=[
+		'Member ID', 'First Name', 'Middle Name', 'Last Name', 'Join Date', 'Superviser ID', 'Email'], tablefmt='psql'))
 
-    print("Add an editor:")
-    auth_id = input("Editor ID: ")
-    genre = input("Genre the editor works in: ")
+	print("Add an editor:")
+	auth_id = input("Editor ID: ")
+	genre = input("Genre the editor works in: ")
 
-    insertion_query = "INSERT into editor values (" + auth_id + ", \"" + genre + "\");"
+	query = "INSERT into editor values (" + auth_id + ", \"" + genre + "\");"
+	db_con(username, password, query)
 
 
 # add a editor
-def add_a_marketer () :
+def add_a_marketer (username, password) :
 	print("Members available: ")
 	retrieval_query = "SELECT * from members"
 	data = db_con(username, password, retrieval_query)
-    print(tabulate(data, headers=[
-          'Member ID', 'First Name', 'Middle Name', 'Last Name', 'Join Date', 'Superviser ID', 'Email'], tablefmt='psql'))
+	print(tabulate(data, headers=[
+		'Member ID', 'First Name', 'Middle Name', 'Last Name', 'Join Date', 'Superviser ID', 'Email'], tablefmt='psql'))
 
-    print("Add a marketer:")
-    auth_id = input("Marketer ID: ")
-    platform = input("Platform the marketer works with: ")
+	print("Add a marketer:")
+	auth_id = input("Marketer ID: ")
+	platform = input("Platform the marketer works with: ")
 
-    insertion_query = "INSERT into marketing values (" + auth_id + ", \"" + platform + "\");"
+	query = "INSERT into marketing values (" + auth_id + ", \"" + platform + "\");"
+	db_con(username, password, query)
 
 
 # add a record for sponsor
@@ -125,7 +129,7 @@ def add_a_subscriber (username, password) :
 	elif len(name) != 1:
 		m_name == " ".join(name[1:-1])
 
-	query = "INSERT into subscribers values(\"" + email + "\"," + sub_type + ", \"" + sub_date +  "\", \"" + f_name + "\", \"" + m_name + "\", \"" + l_name + "\");"
+	query = "INSERT into subscribers values(\"" + email + "\"," + sub_type + ", \"" + sub_date +"\", \"" + f_name + "\", \"" + m_name + "\", \"" + l_name + "\");"
 
 	db_con(username, password, query)
 
