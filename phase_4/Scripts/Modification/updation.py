@@ -1,6 +1,7 @@
 import pymysql
 import pymysql.cursors
 from termcolor import colored
+from tabulate import tabulate
 
 def db_con(username, password, query):
 	db = pymysql.connect("localhost", username, password, "data_kedavra")
@@ -20,9 +21,7 @@ def modify_article_details (username, password) :
 	data = db_con(username, password, query)
 	# Display all the article details
 	print(colored("Articles available:", 'green', attrs=['bold']))
-	print(colored("volume_no \tissue_no \tpage_no \t category \ttitle", 'blue'))
-	for i in data:
-		print(colored(str(i[0]) + "\t\t" + str(i[1]) + "\t\t" + str(i[2]) + "\t\t" + i[3] + "\t\t" + i[4], 'cyan'))
+	print(colored(tabulate(data, headers=['Volume No.', 'Issue No.', 'Page No.', 'Category', 'Title'], tablefmt='psql'), 'cyan'))
 	print("")
 
 	# Select the detail to change
@@ -78,9 +77,7 @@ def modify_member_details (username, password) :
 	data = db_con(username, password, query)
 	# Display all the article details
 	print(colored("Members available:", 'green', attrs=['bold']))
-	print(colored("Member ID \tFirst Name \tMiddle Name \t Last Name \tJoin Date \tSuperviser ID \tEmail", 'blue'))
-	for i in data:
-		print(colored(str(i[0]) + "\t\t" + str(i[1]) + "\t\t" + str(i[2]) + "\t\t" + i[3] + "\t\t" + str(i[4]) + "\t\t" + str(i[5]) + "\t\t" + i[6], 'cyan'))
+	print(colored(tabulate(data, headers=['Member ID', 'First Name', 'Middle Name', 'Last Name', 'Join Date', 'Superviser ID', 'Email'], tablefmt='psql'), 'cyan'))
 	print("")
 
 	# Select the detail to change
@@ -137,9 +134,7 @@ def modify_subscriber_details (username, password) :
 	data = db_con(username, password, query)
 	# Display all the article details
 	print(colored("Subscribers available:", 'green', attrs=['bold']))
-	print(colored("Email \t\t\t\tSubscription type \tSubscription Date \tFirst Name \tMiddle Name \t\tLast Name", 'blue'))
-	for i in data:
-		print(colored(str(i[0]) + "\t\t" + str(i[1]) + " months \t\t" + str(i[2]) + "\t\t" + (i[3]) + "\t\t" + str(i[4]) + "\t\t\t" + str(i[5]), 'cyan'))
+	print(colored(tabulate(data, headers=['Email', 'Subscription Type', 'Subscription Date', 'First Name', 'Middle Name', 'Last Name'], tablefmt='psql'), 'cyan'))
 	print("")
 
 	# Select the detail to change
@@ -196,10 +191,7 @@ def modify_author_details (username, password) :
 	data = db_con(username, password, query)
 	# Display all the article details
 	print(colored("Authors available:", 'green', attrs=['bold']))
-	print(colored("ID \tLanguage", 'blue'))
-	for i in data:
-		print(colored(str(i[0]) + "\t" + str(i[1]), 'cyan'))
-	print("")
+	print(colored(tabulate(data, headers=['ID', 'Language'], tablefmt='psql'), 'cyan'))
 
 	# Select the detail to change
 	print("What detail would you like to change?")
@@ -239,9 +231,7 @@ def modify_cartoon_details (username, password) :
 	data = db_con(username, password, query)
 	# Display all the article details
 	print(colored("Cartoons available:", 'green', attrs=['bold']))
-	print(colored("Volume no. \tIssue no. \tTags \t\t\tImage URL \t\t\t\tCaption", 'blue'))
-	for i in data:
-		print(colored(str(i[3]) + "\t\t" + str(i[4]) + "\t\t" + str(i[2]) + "\t\t" + i[0] + "\t\t\t\t" + i[1], 'cyan'))
+	print(colored(tabulate(data, headers=['Volume No.', 'Issue No.', 'Tags', 'Image URL', 'Caption'], tablefmt='psql'), 'cyan'))
 	print("")
 
 	# Select the detail to change
@@ -296,9 +286,7 @@ def modify_contribution_details (username, password) :
 	data = db_con(username, password, query)
 	# Display all the article details
 	print(colored("Contributions available:", 'green', attrs=['bold']))
-	print(colored("Editor ID \tAuthor ID \tDesigner ID \tVolume no. \tIssue no. \tPage no.", 'blue'))
-	for i in data:
-		print(colored(str(i[0]) + "\t\t" + str(i[1]) + "\t\t" + str(i[2]) + "\t\t" + str(i[3]) + "\t\t" + str(i[4]) + "\t\t" + str(i[5]), 'cyan'))
+	print(colored(tabulate(data, headers=['Editor ID', 'Author ID', 'Desginer ID', 'Volume No.', 'Issue No.', 'Page No.'], tablefmt='psql'), 'cyan'))
 	print("")
 
 	# Select the detail to change
@@ -356,9 +344,7 @@ def modify_designer_details (username, password) :
 	data = db_con(username, password, query)
 	# Display all the article details
 	print(colored("Designers available:", 'green', attrs=['bold']))
-	print(colored("ID \tLanguage", 'blue'))
-	for i in data:
-		print(colored(str(i[0]) + "\t" + str(i[1]), 'cyan'))
+	print(colored(tabulate(data, headers=['ID', 'Languages'], tablefmt='psql'), 'cyan'))
 	print("")
 
 	# Select the detail to change
@@ -399,9 +385,7 @@ def modify_draws_details (username, password) :
 	data = db_con(username, password, query)
 	# Display all the article details
 	print(colored("Designers and their drawings available:", 'green', attrs=['bold']))
-	print(colored("ID \tCartoon", 'blue'))
-	for i in data:
-		print(colored(str(i[1]) + "\t" + str(i[0]), 'cyan'))
+	print(colored(tabulate(data, headers=['ID', 'Cartoon'], tablefmt='psql'), 'cyan'))
 	print("")
 
 	# Select the detail to change
@@ -442,9 +426,7 @@ def modify_editor_details (username, password) :
 	data = db_con(username, password, query)
 	# Display all the article details
 	print(colored("Editors available:", 'green', attrs=['bold']))
-	print(colored("ID \tLanguage", 'blue'))
-	for i in data:
-		print(colored(str(i[0]) + "\t" + str(i[1]), 'cyan'))
+	print(colored(tabulate(data, headers=['ID', 'Language'], tablefmt='psql'), 'cyan'))
 	print("")
 
 	# Select the detail to change
@@ -485,9 +467,7 @@ def modify_magazine_details (username, password) :
 	data = db_con(username, password, query)
 	# Display all the article details
 	print(colored("Articles available:", 'green', attrs=['bold']))
-	print(colored("volume_no \tissue_no \tdate", 'blue'))
-	for i in data:
-		print(colored(str(i[0]) + "\t\t" + str(i[1]) + "\t\t" + str(i[2]), 'cyan'))
+	print(colored(tabulate(data, headers=['Volume No.', 'Issue No.', 'Date'], tablefmt='psql'), 'cyan'))
 	print("")
 
 	# Select the detail to change
@@ -529,7 +509,7 @@ def modify_magazine_details (username, password) :
 
 	db_con(username, password, updation_query)
 
-#
+
 def modify_marketing_details (username, password) :
 
 	# get info about all the articles
@@ -537,9 +517,7 @@ def modify_marketing_details (username, password) :
 	data = db_con(username, password, query)
 	# Display all the article details
 	print(colored("Marketers available:", 'green', attrs=['bold']))
-	print(colored("ID \tPlatforms", 'blue'))
-	for i in data:
-		print(colored(str(i[0]) + "\t" + str(i[1]), 'cyan'))
+	print(colored(tabulate(data, headers=['ID', 'Platforms'], tablefmt='psql'), 'cyan'))
 	print("")
 
 	# Select the detail to change
@@ -580,9 +558,7 @@ def modify_selling_advert_details (username, password) :
 	data = db_con(username, password, query)
 	# Display all the article details
 	print(colored("Sponsors available:", 'green', attrs=['bold']))
-	print(colored("Sponsor ID \tMarketer ID", 'blue'))
-	for i in data:
-		print(colored(str(i[0]) + "\t" + str(i[1]), 'cyan'))
+	print(colored(tabulate(data, headers=['Sponsor ID', 'Marketer ID'], tablefmt='psql'), 'cyan'))
 	print("")
 
 	# Select the detail to change

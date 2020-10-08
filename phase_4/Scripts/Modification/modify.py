@@ -9,9 +9,10 @@ def main(username, password):
 	print(colored("1. Insertion", 'cyan', attrs=['bold']))
 	print(colored("""
 			Creating an Issue.
-			Adding Tags to Article.
-			Adding Categories to the Article.
-			Adding Tags to the Article.
+			Add an Author.
+			Add a Designer.
+			Add an Editor.
+			Add a Marketer.
 			Add a Member.
 			Add a Subscriber.
 			Add a Sponsor.""", 'yellow'))
@@ -24,11 +25,11 @@ def main(username, password):
 			Modify Cartoon details
 			Modify Contribution details
 			Modify Designer details
-			Modify Cartoon Designer details
+			Modify Draws Details
 			Modify Editor details
 			Modify Magazine details
 			Modify Marketing details
-			Modify Sponsor and Marketer details""", "yellow"))
+			Modify Selling Advert Details""", "yellow"))
 	print(colored("3. Deletion", 'cyan', attrs=['bold']))
 	print(colored("""
 			Remove a Member.
@@ -43,10 +44,13 @@ def main(username, password):
 		print(colored("Which of the following Insertions would you like to do?", 'cyan', attrs=['bold']),end="")
 		print(colored("""
 				1. Creating an Issue.
-				2. Adding Categories to the Article.
-				3. Add a Member.
-				4. Add a Subscriber.
-				5. Add a Sponsor.""",'yellow'))
+				2. Add an Author.
+				3. Add a Designer.
+				4. Add an Editor.
+				5. Add a Marketer.
+				6. Add a Member.
+				7. Add a Subscriber.
+				8. Add a Sponsor.""",'cyan'))
 		
 		ch2 = int(input(colored("Enter choice: ",'green')))
 		tmp = sp.call('clear', shell = True)
@@ -57,15 +61,24 @@ def main(username, password):
 			query = insertion.creating_an_issue(username, password)
 
 		elif ch2==2:
-			query = insertion.adding_categories_to_the_article(username, password)
+			query = insertion.add_an_author(username, password)
 
 		elif ch2==3:
-			query = insertion.add_a_member(username, password)
+			query = insertion.add_a_designer(username, password)
 
 		elif ch2==4:
-			query = insertion.add_a_subscriber(username, password)
+			query = insertion.add_an_editor(username, password)
 
 		elif ch2==5:
+			query = insertion.add_a_marketer(username, password)
+
+		elif ch2==6:
+			query = insertion.add_a_member(username, password)
+
+		elif ch2==7:
+			query = insertion.add_a_subscriber(username, password)
+
+		elif ch2==8:
 			query = insertion.add_a_sponsor(username, password)
 
 		else:
@@ -85,11 +98,11 @@ def main(username, password):
 				5. Modify Cartoon details
 				6. Modify Contribution details
 				7. Modify Designer details
-				8. Modify Cartoon Designer details
+				8. Modify Draws details
 				9. Modify Editor details
 				10. Modify Magazine details
 				11. Modify Marketing details
-				12. Modify Sponsor and Marketer details""", 'yellow'))
+				12. Modify Selling Advert Details""", 'cyan'))
 
 		ch2 = int(input(colored("Enter choice: ",'green')))
 		tmp = sp.call('clear', shell = True)
@@ -145,7 +158,7 @@ def main(username, password):
 				1. Remove a Member.
 				2. Delete an Article.
 				3. Unsubscribe.
-				4. Remove a Sponsor""", 'yellow'))
+				4. Remove a Sponsor""", 'cyan'))
 
 		ch2 = int(input(colored("Enter choice: ",'green')))
 		tmp = sp.call('clear', shell = True)
@@ -153,16 +166,16 @@ def main(username, password):
 		# 
 		#
 		if ch2==1:
-			query = deletion.remove_a_member()
+			query = deletion.remove_a_member(username, password)
 
 		elif ch2==2:
-			query = deletion.delete_an_article()
+			query = deletion.delete_an_article(username, password)
 
 		elif ch2==3:
-			query = deletion.unsubscribe()
+			query = deletion.unsubscribe(username, password)
 
 		elif ch2==4:
-			query = deletion.remove_a_sponsor()
+			query = deletion.remove_a_sponsor(username, password)
 
 		else:
 			return
