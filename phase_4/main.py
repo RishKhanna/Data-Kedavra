@@ -7,29 +7,32 @@ from termcolor import colored
 
 
 def fn1():
-	query = "SHOW TABLES;"
-	cur.execute(query)
-	data = cur.fetchall()
-	for i in range(len(data)):
-		if i<10:
-			print(colored(str(i) +" : " + data[i][0], "yellow"))
-		else:
-			print(colored(str(i)+": " + data[i][0], "yellow"))
+    query = "SHOW TABLES;"
+    cur.execute(query)
+    data = cur.fetchall()
+    for i in range(len(data)):
+        if i < 10:
+            print(colored(str(i) + " : " + data[i][0], "yellow"))
+        else:
+            print(colored(str(i)+": " + data[i][0], "yellow"))
 
 # call the function depending on the option chosen
-def dispatch(ch):
-	if ch == 1:
-		fn1()
-	elif ch==2:
-		retrive.main()
-	elif ch==3:
-		modify.main(username, password)
 
-	else:
-		print(colored("Enter a valid option.", 'red'))
+
+def dispatch(ch):
+    if ch == 1:
+        fn1()
+    elif ch == 2:
+        retrive.main(username, password)
+    elif ch == 3:
+        modify.main(username, password)
+
+    else:
+        print(colored("Enter a valid option.", 'red'))
 
 
 while(1):
+
 	tmp = sp.call('clear', shell = True)
 
 	# get username and password through input
