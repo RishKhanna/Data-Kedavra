@@ -46,3 +46,6 @@ def show_cartoons_with_a_particular_tag(username, password):
 def subscribers_with_a_particular_subscription_type(username, password):
     subtype = input("Subscription Type (1, 2 or 3): ")
     query = "SELECT F_NAME, M_NAME, L_NAME, EMAIL FROM SUBSCRIBERS WHERE SUB_TYPE="+subtype+";"
+    table = db_con(username, password, query)
+    print(tabulate(table, headers=[
+          'First Name', 'Middle Name', 'Last Name', 'E-Mail'], tablefmt='psql'))
