@@ -17,6 +17,6 @@ store the data like cartoons, articles, members.
 
 
 ## Contributors 
-[Rishabh Khanna](https://github.com/KyaBacchaHai) <br>
+[Rishabh Khanna](https://github.com/RishKhanna) <br>
 [Kshitijaa Jaglan](https://github.com/deutranium) <br>
 [Pahulpreet Singh](https://github.com/codelixir)
